@@ -1,0 +1,41 @@
+<koken:include file="inc/head.html" />
+
+	<koken:include file="inc/header-essays.html" />
+
+	<koken:load limit="20">
+
+		<div id="text">
+
+			<div class="lcol">
+
+				<koken:loop>
+
+					<koken:include file="inc/essay-article.html" />
+
+				</koken:loop>
+
+				<koken:include file="inc/pagination.html" />
+
+			</div>
+
+			<div class="rcol">
+
+				<koken:if true="settings.essay_show_aside">
+
+					<koken:include file="inc/essay-aside.html" />
+
+				</koken:if>
+
+			</div>
+
+		</div>
+
+		<koken:else>
+
+		<p class="null">
+			No essays found. Create some in Text.
+		</p>
+
+	</koken:load>
+
+<koken:include file="inc/footer.html" />

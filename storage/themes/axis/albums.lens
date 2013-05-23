@@ -1,0 +1,25 @@
+<koken:include file="layouts/header.html" />
+
+<koken:load>
+
+	<div id="sets-layout">
+
+		<koken:loop>
+
+			<div class="item">
+				<koken:link><koken:img size="3:2" /></koken:link>
+				<koken:if true="settings.show_albums_album_title"><h2><koken:link>{{ album.title }}</koken:link></h2></koken:if>
+				<koken:if true="settings.show_albums_album_summary"><p>{{ album.summary }}</p></koken:if>
+			</div>
+
+		</koken:loop>
+
+	</div>
+
+	<koken:else>
+
+		No albums found.
+
+</koken:load>
+
+<koken:include file="layouts/footer.html" />

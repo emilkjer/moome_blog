@@ -1,0 +1,36 @@
+@font-face {
+  font-family: 'FontAwesome';
+  src: url('../font/fontawesome-webfont.eot?v=3.0.1');
+  src: url('../font/fontawesome-webfont.eot?#iefix&v=3.0.1') format('embedded-opentype'),
+    url('../font/fontawesome-webfont.woff?v=3.0.1') format('woff'),
+    url('../font/fontawesome-webfont.ttf?v=3.0.1') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="kicon-text-"],
+[class*=" kicon-text-"] {
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  text-decoration: inherit;
+  -webkit-font-smoothing: antialiased;
+  display: inline;
+  width: auto;
+  height: auto;
+  line-height: normal;
+  vertical-align: baseline;
+  background-image: none;
+  background-position: 0% 0%;
+  background-repeat: repeat;
+  margin-top: 0;
+  margin-right: 0.2em;
+}
+
+.kicon-text-share:before                { content: "\f045"; }
+.kicon-text-share-alt:before            { content: "\f064"; }
+.kicon-text-time:before                 { content: "\f017"; }
+.kicon-text-link:before                 { content: "\f0c1"; }
+.kicon-text-tag:before                  { content: "\f02b"; }
+.kicon-text-plus-sign:before            { content: "\f055"; }
+.kicon-text-plus:before                 { content: "\f067"; }

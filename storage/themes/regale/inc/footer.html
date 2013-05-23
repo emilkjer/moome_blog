@@ -1,0 +1,27 @@
+	</div> <!-- close container -->
+
+	<footer class="main">
+
+		<koken:if true="settings.show_copyright">
+			<span class="copyright">
+				{{ site.copyright }}
+			</span>
+		</koken:if>
+
+		<nav>
+			<koken:navigation group="footer" />
+		</nav>
+
+		<koken:if true="settings.show_social">
+			<div class="social">
+				<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+				<a class="addthis_button_tweet"></a>
+				<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+			</div>
+		</koken:if>
+
+	</footer>
+
+</body>
+
+</html>

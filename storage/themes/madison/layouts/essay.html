@@ -1,0 +1,44 @@
+<header>
+	<h1>
+		<koken:link>
+			{{ title }}
+		</koken:link>
+	</h1>
+</header>
+
+{{ content }}
+
+<footer>
+
+	<i class="kicon-text-time"></i> <koken:time class="publish-date" show="date" />&nbsp;&nbsp;&nbsp;&nbsp;<i class="kicon-text-link"></i> <koken:link>Permalink</koken:link>&nbsp;&nbsp;&nbsp;&nbsp;<koken:if true="settings.show_share_link">
+		<div class="share_content">
+			<i class="kicon-text-plus-sign"></i> <span class="share_button">Share</span>
+			<div class="kshare">
+				<input type="text" class="kshare-input" value="{{ essay.url }}" />
+				<ul class="kshare-items">
+					<li>
+			    		<koken:if empty="profile.twitter"><a href="https://twitter.com/intent/tweet?text={{ essay.title }}&url={{ essay.url }}" class="share-twitter" title="Share {{ essay.title }} on Twitter"><koken:else><a href="https://twitter.com/intent/tweet?text={{ essay.title }}&url={{ essay.url }}&via={{ profile.twitter }}" class="share-twitter" title="Share {{ essay.title }} on Twitter"></koken:if><i class="kicon-share-twitter"></i></a>
+			    	</li>
+			    	<li>
+			   			 <a target="_blank" href="https://www.facebook.com/sharer.php?u={{ essay.url }}" class="share-facebook"><i class="kicon-share-facebook"></i></a>
+			   		</li>
+			   		<li>
+			    		<a target="_blank" href="http://pinterest.com/pin/create/button/?url={{ essay.url }}" class="share-pinterest"><i class="kicon-share-pinterest"></i></a>
+			    	</li>
+			    	<li>
+			    		<a target="_blank" href="https://plus.google.com/share?url={{ essay.url }}" class="share-google"><i class="kicon-share-gplus"></i></a>
+			    	</li>
+			    </ul>
+		    </div>
+		 </div>
+	</koken:if>
+
+	<koken:tags>
+		<p><i class="kicon-text-tag"></i> <koken:loop separator=", ">
+			<koken:link>
+				{{ tag.title }}
+			</koken:link>
+		</koken:loop></p>
+	</koken:tags>
+
+</footer>

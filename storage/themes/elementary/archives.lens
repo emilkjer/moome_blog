@@ -1,0 +1,115 @@
+<koken:include file="layouts/header.html" />
+
+<koken:load>
+
+	<koken:loop>
+
+		<h2>
+			{{ archive.type.plural }} / {{ archive.title }}
+		</h2>
+
+		<koken:not empty="preview.content">
+
+		<section>
+
+			<div class="head">
+				<div class="fright">
+					{{ preview.content.length }} of {{ counts.content }}
+					&nbsp;/&nbsp;
+					<koken:link to="archive_contents" title="View all">View all</koken:link>
+				</div>
+				<h3>
+					Content
+				</h3>
+			</div>
+
+			<div class="stream">
+				<ol class="thumbs">
+				<koken:loop data="preview.content">
+					<koken:include file="layouts/content_list_item.html" />
+				</koken:loop>
+				</ol>
+			</div>
+
+		</section>
+
+		</koken:not>
+
+		<koken:not empty="preview.albums">
+
+		<section>
+
+			<div class="head">
+				<div class="fright">
+					{{ preview.albums.length }} of {{ counts.albums }}
+					&nbsp;/&nbsp;
+					<koken:link to="archive_albums" title="View all">View all</koken:link>
+				</div>
+				<h3>
+					Albums
+				</h3>
+			</div>
+
+			<div class="albums">
+
+				<ol class="thumbs">
+
+					<koken:loop data="preview.albums">
+
+						<koken:include file="layouts/album_index_loop.html" />
+
+					</koken:loop>
+
+				</ol>
+
+			</div>
+
+		</section>
+
+		</koken:not>
+
+		<koken:not empty="preview.essays">
+
+		<section>
+
+			<div class="head">
+				<div class="fright">
+					{{ preview.essays.length }} of {{ counts.essays }}
+					&nbsp;/&nbsp;
+					<koken:link to="archive_essays" title="View all">View all</koken:link>
+				</div>
+				<h3>
+					Essays
+				</h3>
+			</div>
+
+			<div class="essay-previews">
+				<ol>
+				<koken:loop data="preview.essays">
+					<li>
+						<koken:link>
+							{{ essay.title }}
+						</koken:link>
+						<p>
+						{{ essay.excerpt }}...<koken:link>more</koken:link>
+						</p>
+					</li>
+				</koken:loop>
+				</ol>
+			</div>
+
+		</section>
+
+		</koken:not>
+
+	</koken:loop>
+
+	<koken:include file="layouts/pagination.html" />
+
+	<koken:else>
+
+	Nothing to see.
+
+</koken:load>
+
+<koken:include file="layouts/footer.html" />

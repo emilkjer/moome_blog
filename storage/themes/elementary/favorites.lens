@@ -1,0 +1,21 @@
+<koken:include file="layouts/header.html" />
+
+<koken:load limit="{{ settings.content_index_limit }}">
+
+<ol class="thumbs">
+
+	<koken:loop>
+		<koken:include file="layouts/content_list_item.html" />
+	</koken:loop>
+
+</ol>
+
+<koken:include file="layouts/pagination.html" />
+
+<koken:else>
+
+	No favorites found. Create some in the Library.
+
+</koken:load>
+
+<koken:include file="layouts/footer.html" />

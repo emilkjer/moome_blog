@@ -1,0 +1,41 @@
+<koken:include file="layouts/header.html" />
+
+<koken:load>
+
+	<koken:head>
+		<meta property="og:site_name" content="{{ site.title }}" />
+		<meta property="og:title" content="{{ album.title strip_html="true" }}" />
+		<meta property="og:description" content="{{ album.summary strip_html="true" }}" />
+		<meta property="og:type" content="website" />
+		<koken:not empty="profile.twitter">
+			<meta name="twitter:card" content="gallery" />
+			<meta name="twitter:site" content="@{{ profile.twitter }}" />
+			<meta name="twitter:creator" content="@{{ profile.twitter }}" />
+		</koken:not>
+		<koken:covers minimum="4" limit="4">
+			<koken:loop>
+				<meta property="og:image" content="{{ content.presets.medium_large.url }}" />
+				<koken:not empty="profile.twitter">
+					<meta name="twitter:image{{ index }}" content="{{ content.presets.medium_large.cropped.url }}">
+				</koken:not>
+			</koken:loop>
+		</koken:covers>
+	</koken:head>
+
+	<div id="sets-layout">
+
+		<koken:loop>
+
+			<div class="item">
+				<koken:link><koken:img size="3:2" /></koken:link>
+				<koken:if true="settings.show_albums_album_title"><h2><koken:link>{{ album.title }}</koken:link></h2></koken:if>
+				<koken:if true="settings.show_albums_album_summary"><p>{{ album.summary }}</p></koken:if>
+			</div>
+
+		</koken:loop>
+
+	</div>
+
+</koken:load>
+
+<koken:include file="layouts/footer.html" />

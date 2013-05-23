@@ -1,0 +1,56 @@
+<koken:include file="inc/header.html" />
+
+<div id="text">
+
+	<koken:load limit="20">
+
+		<koken:loop>
+
+			<article>
+
+				<koken:include file="inc/article.html" />
+
+			</article>
+
+		</koken:loop>
+
+		<koken:pagination>
+
+			<div class="bot">
+
+				<ul>
+					<li>
+						<span class="cell left">
+							<koken:if condition="{{ page }} > 1">
+								<koken:link data="previous_page" title="View page {{ previous_page.number }}" class="nav" bind_to_key="left">
+									<i class="icon-left-open-mini"></i> Previous
+								</koken:link>
+							</koken:if>
+						</span>
+						<span class="cell">
+							<koken:loop>
+								<koken:link class="nav num {{ is_current }}" title="View page {{ number }}">
+									{{ number }}
+								</koken:link>
+								&nbsp;
+							</koken:loop>
+						</span>
+						<span class="cell right">
+							<koken:if condition="{{ page }} < {{ pages }}">
+								<koken:link data="next_page" title="View page {{ next_page.number }}" class="nav" bind_to_key="right">
+									Next <i class="icon-right-open-mini"></i>
+								</koken:link>
+							</koken:if>
+						</span>
+					</li>
+				</ul>
+
+			</div>
+
+		</koken:pagination>
+
+	</koken:load>
+
+</div>
+
+<koken:include file="inc/footer.html" />

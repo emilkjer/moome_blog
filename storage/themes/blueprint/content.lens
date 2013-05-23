@@ -1,0 +1,188 @@
+<koken:include file="inc/header.html" />
+
+<div id="content">
+
+	<!-- Load this template's source data (content) -->
+	<koken:load>
+
+		<!-- Add Facebook open graph metadata for nicer sharing -->
+		<koken:head>
+			<meta property="og:site_name" content="{{ site.title }}" />
+			<meta property="og:title" content="{{ content.title|content.filename strip_html="true" }}" />
+			<meta property="og:description" content="{{ content.caption strip_html="true" }}" />
+			<meta property="og:type" content="website" />
+			<meta property="og:image" content="{{ content.presets.medium_large.url }}" />
+			<meta property="og:image:width" content="{{ content.presets.medium_large.width }}" />
+			<meta property="og:image:height" content="{{ content.presets.medium_large.height }}" />
+			<meta property="og:url" content="{{ content.url }}" />
+			<koken:content_image>
+				<koken:not empty="profile.twitter">
+					<meta name="twitter:card" content="photo" />
+					<meta name="twitter:site" content="@{{ profile.twitter }}" />
+					<meta name="twitter:creator" content="@{{ profile.twitter }}" />
+				</koken:not>
+			</koken:content_image>
+		</koken:head>
+
+	    <!-- Display pagination links -->
+		<div id="content-pag">
+
+			<!-- Checks to see if content has a parent album. If so, label pagination links differently -->
+			<koken:parent>
+				<koken:variable name="previous_label" value="Newer" />
+				<koken:variable name="next_label" value="Older" />
+			<koken:else>
+				<koken:variable name="previous_label" value="Previous" />
+				<koken:variable name="next_label" value="Next" />
+			</koken:parent>
+
+			<koken:previous>
+				<koken:link title="{{ previous_label }}" bind_to_key="left">&larr; {{ previous_label }}</koken:link>
+			<koken:else>
+				<!-- display no link -->
+			</koken:previous>
+
+			&nbsp;
+
+			<!-- Display the current and total #s -->
+			{{ content.context.position }} of {{ content.context.total }}
+
+			&nbsp;
+
+			<koken:next>
+				<koken:link title="{{ next_label }}" bind_to_key="right">{{ next_label }} &rarr;</koken:link>
+			<koken:else>
+				<!-- display no link -->
+			</koken:next>
+
+		</div>
+
+		<!-- Display the content title -->
+		<h2>
+			{{ content.title | content.filename }}
+		</h2>
+
+		<!-- Displayed if the asset is an image -->
+		<koken:content_image>
+
+			<!-- Load image in lightbox viewer if clicked -->
+			<koken:link lightbox="true" bind_to_key="l">
+				<koken:img />
+			</koken:link>
+
+		</koken:content_image>
+
+		<!-- Displayed if the asset is a video -->
+		<koken:content_video>
+
+			<!-- Load the video -->
+			<koken:video />
+
+		</koken:content_video>
+
+		<br>
+
+		<!-- Opens the image in the lightbox viewer -->
+		<koken:link lightbox="true" class="button">View in lightbox</koken:link>
+
+		<!-- Display the content caption and wrap with p tags -->
+		{{ content.caption paragraphs="true" }}
+
+		<!-- Display uploaded date -->
+		<p>
+			<strong>Uploaded:</strong> {{ content.uploaded_on }}
+		</p>
+
+		<!-- Display captured date -->
+		<p>
+			<strong>Captured:</strong> {{ content.captured_on }}
+		</p>
+
+		<!-- Display assigned categories -->
+		<koken:categories>
+			<p>
+				<strong>Categories:</strong>
+				<koken:loop separator=", ">
+					<koken:link>
+						{{ category.title }}
+					</koken:link>
+				</koken:loop>
+			</p>
+		</koken:categories>
+
+	    <!-- Display assigned tags -->
+		<koken:tags>
+			<p>
+				<strong>Tags:</strong>
+				<koken:loop separator=", ">
+					<koken:link>
+						{{ tag.title }}
+					</koken:link>
+				</koken:loop>
+			</p>
+		</koken:tags>
+
+		<!-- Display EXIF data -->
+		<koken:exif>
+			<p>
+				<strong>EXIF:</strong>
+				<koken:not empty="exif.model">
+					{{ exif.model }},
+				</koken:not>
+				<koken:not empty="exif.exposure">
+					{{ exif.exposure }},
+				</koken:not>
+				<koken:not empty="exif.aperture">
+					{{ exif.aperture }},
+				</koken:not>
+				<koken:not empty="exif.focal_length">
+					{{ exif.focal_length }},
+				</koken:not>
+				<koken:not empty="exif.iso_speed_ratings">
+					{{ exif.iso_speed_ratings }}
+				</koken:not>
+			</p>
+		</koken:exif>
+
+		<!-- Display content license -->
+		<p>
+			<strong>License:</strong>
+			{{ content.license.clean }}
+		</p>
+
+		<!-- If item is an image and allows downloading, show download link -->
+		<koken:max_download>
+			<p>
+				<strong>Download image:</strong> <koken:link>
+					{{ max_download.label }}&nbsp;({{ max_download.width }}x{{ max_download.height }})
+				</koken:link>
+			</p>
+		<koken:else>
+			<p>
+				<strong>Download image: </strong>User has disabled downloads for this image.
+			</p>
+		</koken:max_download>
+
+		<!-- If content is part of an album, display a link to it -->
+		<koken:parent>
+			<p>
+				<strong>From the album:</strong> <koken:link title="View {{ album.title }}">
+				{{ album.title }}</koken:link>
+			</p>
+		</koken:parent>
+
+		<!-- Display a link to Google Maps to show where this photo was taken -->
+		<koken:geolocation>
+			<a href="http://maps.google.com/?q={{ geolocation.latitude }},{{ geolocation.longitude }}" target="_blank">View map</a>
+		</koken:geolocation>
+
+		<!-- Fallback content if no data was loaded by koken:load -->
+		<koken:else>
+
+			Nothing loaded
+
+	</koken:load>
+
+</div> <!-- close #content -->
+
+<koken:include file="inc/footer.html" />

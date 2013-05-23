@@ -1,0 +1,31 @@
+@font-face {
+  font-family: 'sharetfpg';
+  src: url('../font/sharetfpg.eot?32349097');
+  src: url('../font/sharetfpg.eot?32349097#iefix') format('embedded-opentype'),
+       url('../font/sharetfpg.woff?32349097') format('woff'),
+       url('../font/sharetfpg.ttf?32349097') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="kicon-share-"]:before,
+[class*=" kicon-share-"]:before {
+  font-family: 'sharetfpg';
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: 0.2em;
+  text-align: center;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1em;
+}
+
+.kicon-share-gplus:before { content: '\2b'; }
+.kicon-share-pinterest:before { content: '\31'; }
+.kicon-share-twitter:before { content: '\54'; }
+.kicon-share-facebook:before { content: '\66'; }
+.kicon-share-plus-squared:before { content: '\229e'; }

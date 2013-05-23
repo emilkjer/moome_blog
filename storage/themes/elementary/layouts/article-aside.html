@@ -1,0 +1,41 @@
+<aside>
+
+	<h6>Published</h6>
+	<p><koken:time /></p>
+
+	<koken:topics>
+		<h6>Topics</h6>
+		<p><koken:loop separator=", ">
+			<koken:link>
+				{{ album.title }}
+			</koken:link>
+		</koken:loop></p>
+	</koken:topics>
+
+	<koken:categories>
+		<h6>Categories</h6>
+		<p><koken:loop separator=", ">
+			<koken:link>
+				{{ category.title }}
+			</koken:link>
+		</koken:loop></p>
+	</koken:categories>
+
+	<koken:tags>
+		<h6>Tags</h6>
+		<p><koken:loop separator=", ">
+			<koken:link>
+				{{ tag.title }}
+			</koken:link>
+		</koken:loop></p>
+	</koken:tags>
+
+	<koken:if true="settings.essays_show_share">
+
+		<h6>Share</h6>
+
+	    <ul class="social-links"><li><koken:if empty="profile.twitter"><a href="https://twitter.com/intent/tweet?text={{ essay.title }}&url={{ essay.url }}" class="share-twitter" title="Share {{ essay.title }} on Twitter"><koken:else><a href="https://twitter.com/intent/tweet?text={{ essay.title }}&url={{ essay.url }}&via={{ profile.twitter }}" class="share-twitter" title="Share {{ essay.title }} on Twitter"></koken:if><i class="icon-ksocial-twitter"></i></a></li><li><a href="https://www.facebook.com/sharer.php?u={{ essay.url }}" class="share-twitter" title="Share {{ essay.title }} on Facebook"><i class="icon-ksocial-facebook"></i></a></li><li><a href="https://plus.google.com/share?url={{ essay.url }}" class="share-twitter" title="Share {{ essay.title }} on Google+"><i class="icon-ksocial-google-plus"></i></a></li></ul>
+
+	</koken:if>
+
+</aside>

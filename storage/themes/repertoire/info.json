@@ -1,0 +1,577 @@
+{
+	"name": "Repertoire",
+	"version": "1.2.2",
+	"description": "Theme intended for graphic designers and creative directors to showcase their portfolio of work.",
+	"demo": "http://koken.me",
+	"author": {
+		"name": "Koken",
+		"link": "http://koken.me"
+	},
+	"koken_version_required": "0.8.0-beta.1",
+
+	"navigation_groups": {
+	     "secondary": {
+	        "label": "Secondary",
+	        "defaults": [
+	        	"twitter", "facebook", "gplus"
+	        ]
+	     },
+	     "tertiary": {
+			"label": "Tertiary"
+	     }
+	},
+
+	"settings": {
+		"Typography": {
+			"icon": "type",
+			"settings": {
+				"font": {
+					"label": "Typeface",
+					"type": "select",
+					"options": [
+						{ "label":"Default", "value":"default" },
+						{ "label":"Helvetica", "value":"helvetica" }
+					],
+					"value": "default"
+				},
+				"Body": {
+					"body_font_size": {
+						"label": "Size",
+						"type": "slider",
+						"min": 11,
+						"max": 56,
+						"step": 1,
+						"value": 14,
+						"suffix": "px"
+					},
+					"body_font_lh": {
+						"label": "Line height",
+						"type": "slider",
+						"min": 1,
+						"max": 4,
+						"step": 0.1,
+						"value": 1.5
+					}
+				},
+				"Header One": {
+					"h1_size": {
+						"label": "Size",
+						"type": "slider",
+						"min": 11,
+						"max": 56,
+						"step": 1,
+						"value": 18,
+						"suffix": "px"
+					},
+					"h1_lh": {
+						"label": "Line height",
+						"type": "slider",
+						"min": 1,
+						"max": 4,
+						"step": 0.1,
+						"value": 1.5
+					}
+				},
+				"Header Two": {
+					"h2_size": {
+						"label": "Size",
+						"type": "slider",
+						"min": 11,
+						"max": 56,
+						"step": 1,
+						"value": 16,
+						"suffix": "px"
+					},
+					"h2_lh": {
+						"label": "Line height",
+						"type": "slider",
+						"min": 1,
+						"max": 4,
+						"step": 0.1,
+						"value": 1.5
+					}
+				},
+				"Header Three": {
+					"h3_size": {
+						"label": "Size",
+						"type": "slider",
+						"min": 11,
+						"max": 56,
+						"step": 1,
+						"value": 14,
+						"suffix": "px"
+					},
+					"h3_lh": {
+						"label": "Line height",
+						"type": "slider",
+						"min": 1,
+						"max": 4,
+						"step": 0.1,
+						"value": 1.5
+					}
+				},
+				"Header Four": {
+					"h4_size": {
+						"label": "Size",
+						"type": "slider",
+						"min": 11,
+						"max": 56,
+						"step": 1,
+						"value": 11,
+						"suffix": "px"
+					},
+					"h4_lh": {
+						"label": "Line height",
+						"type": "slider",
+						"min": 1,
+						"max": 4,
+						"step": 0.1,
+						"value": 1.5
+					}
+				}
+			}
+		},
+		"Site title": {
+			"icon":"type",
+			"settings": {
+				"site_title_type": {
+					"label": "Type",
+					"type": "select",
+					"options": [
+						{ "label": "Text", "value": "text" },
+						{ "label": "Image", "value": "image" }
+					],
+					"value": "text"
+				},
+				"site_title_size": {
+					"label": "Size",
+					"type": "slider",
+					"min": 11,
+					"max": 56,
+					"step": 1,
+					"value": 14,
+					"suffix": "px",
+					"dependencies": {
+	                    "evaluate": "all",
+	                    "conditions": [
+	                         {
+	                              "option": "site_title_type",
+	                              "equals": "text"
+	                         }
+	                    ]
+	               }
+				},
+				"site_title_lh": {
+					"label": "Line height",
+					"type": "slider",
+					"min": 11,
+					"max": 56,
+					"step": 1,
+					"value": 21,
+					"suffix": "px",
+					"dependencies": {
+	                    "evaluate": "all",
+	                    "conditions": [
+	                         {
+	                              "option": "site_title_type",
+	                              "equals": "text"
+	                         }
+	                    ]
+	               }
+				},
+				"site_title_weight": {
+					"label": "Weight",
+					"type": "select",
+					"options": [
+						{ "label":"300", "value":"300" },
+						{ "label":"400", "value":"400" },
+						{ "label":"700", "value":"700" }
+					],
+					"value":"400",
+					"dependencies": {
+	                    "evaluate": "all",
+	                    "conditions": [
+	                         {
+	                              "option": "site_title_type",
+	                              "equals": "text"
+	                         }
+	                    ]
+	               }
+				},
+				"show_tagline": {
+					"label": "Show tagline",
+					"type": "boolean",
+					"value": "false",
+					"dependencies": {
+	                    "evaluate": "all",
+	                    "conditions": [
+	                         {
+	                              "option": "site_title_type",
+	                              "equals": "text"
+	                         }
+	                    ]
+	               }
+				},
+				"site_title_img_url": {
+					"label": "Image URL",
+					"type": "string",
+					"value": "",
+					"dependencies": {
+	                    "evaluate": "all",
+	                    "conditions": [
+	                         {
+	                              "option": "site_title_type",
+	                              "equals": "image"
+	                         }
+	                    ]
+	               }
+				},
+				"site_title_img_scale_mobile": {
+					"label": "Mobile scale",
+					"type": "slider",
+					"min": 0.1,
+					"max": 1,
+					"step": 0.1,
+					"value": 0.5,
+					"dependencies": {
+	                    "evaluate": "all",
+	                    "conditions": [
+	                         {
+	                              "option": "site_title_type",
+	                              "equals": "image"
+	                         }
+	                    ]
+	               }
+				}
+			}
+		},
+		"Navigation": {
+			"icon": "nav",
+			"settings": {
+				"nav_show_secondary": {
+					"label": "Show secondary nav",
+					"type": "boolean",
+					"value": "true",
+					"control_first": "true"
+				},
+				"nav_show_tertiary": {
+					"label": "Show tertiary nav",
+					"type": "boolean",
+					"value": "true",
+					"control_first": "true"
+				},
+				"nav_show_headers": {
+					"label": "Show navigation headers",
+					"type": "boolean",
+					"value": "true",
+					"control_first": "true"
+				},
+				"primary_title": {
+					"label": "First label",
+					"type": "string",
+					"value": "Primary",
+					"dependencies": {
+	                    "evaluate": "all",
+	                    "conditions": [
+	                         {
+	                              "option": "nav_show_headers",
+	                              "equals": true
+	                         }
+	                    ]
+	               }
+				},
+				"secondary_title": {
+					"label": "Second label",
+					"type": "string",
+					"value": "Secondary",
+					"dependencies": {
+	                    "evaluate": "all",
+	                    "conditions": [
+	                         {
+	                              "option": "nav_show_headers",
+	                              "equals": true
+	                         }
+	                    ]
+	               }
+				},
+				"tertiary_title": {
+					"label": "Third label",
+					"type": "string",
+					"value": "Tertiary",
+					"dependencies": {
+	                    "evaluate": "all",
+	                    "conditions": [
+	                         {
+	                              "option": "nav_show_headers",
+	                              "equals": true
+	                         }
+	                    ]
+	               }
+				},
+				"nav_header_size": {
+					"label": "Header size",
+					"type": "slider",
+					"min":12,
+					"max":28,
+					"step":1,
+					"value":14,
+					"dependencies": {
+	                    "evaluate": "all",
+	                    "conditions": [
+	                         {
+	                              "option": "nav_show_headers",
+	                              "equals": true
+	                         }
+	                    ]
+	               }
+				},
+				"nav_header_mbot": {
+					"label": "Header margin bot",
+					"type": "slider",
+					"min":0,
+					"max":28,
+					"step":1,
+					"value":8,
+					"dependencies": {
+	                    "evaluate": "all",
+	                    "conditions": [
+	                         {
+	                              "option": "nav_show_headers",
+	                              "equals": true
+	                         }
+	                    ]
+	               }
+				},
+				"nav_header_item_mbot": {
+					"label": "Nav margin bot",
+					"type": "slider",
+					"min":0,
+					"max":28,
+					"step":1,
+					"value":4
+				},
+				"nav_header_weight": {
+					"label": "Weight",
+					"type": "select",
+					"options": [
+						{ "label":"300", "value":"300" },
+						{ "label":"400", "value":"400" },
+						{ "label":"700", "value":"700" }
+					],
+					"value":"400"
+				}
+			}
+		},
+		"Layout": {
+			"icon": "layout",
+			"settings": {
+				"albumd_show_year": {
+					"label": "Show year",
+					"type": "boolean",
+					"value": "true",
+					"control_first": true,
+					"scope": [ "album" ]
+				},
+				"albumd_show_categories": {
+					"label": "Show category",
+					"type": "boolean",
+					"value": "true",
+					"control_first": true,
+					"scope": [ "album", "albums" ]
+				},
+				"albumd_show_title": {
+					"label": "Show title",
+					"type": "boolean",
+					"value": "true",
+					"control_first": true,
+					"scope": [ "album" ]
+				},
+				"albumd_show_caption": {
+					"label": "Show caption",
+					"type": "boolean",
+					"value": "true",
+					"control_first": true,
+					"scope": [ "album" ]
+				},
+				"show_img_spinner": {
+					"label": "Show image spinner",
+					"type": "boolean",
+					"value": true,
+					"control_first": true,
+					"scope": [ "album" ]
+				},
+				"index_layout": {
+					"label": "Layout",
+					"type": "select",
+					"options": [
+						{ "label": "One column", "value": "one" },
+						{ "label": "Two columns", "value": "two" }
+					],
+					"value": "two",
+					"scope": [ "index" ]
+				},
+				"index_essays_num": {
+					"label": "Essay excerpts",
+					"type": "slider",
+					"value": 3,
+					"min": 3,
+					"max": 10,
+					"step": 1,
+					"scope": [ "index" ],
+					"dependencies": {
+	                    "evaluate": "all",
+	                    "conditions": [
+	                         {
+	                              "option": "index_layout",
+	                              "equals": "two"
+	                         }
+	                    ]
+	               }
+				}
+			}
+		},
+		"Album info": {
+			"icon": "type",
+			"settings": {
+				"index_show_album_summary": {
+					"label": "Show album summaries",
+					"type": "boolean",
+					"value": true,
+					"control_first": true,
+					"scope": [ "index" ]
+				},
+				"index_show_album_title": {
+					"label": "Show album titles",
+					"type": "boolean",
+					"value": true,
+					"control_first": true,
+					"scope": [ "index" ]
+				}
+			}
+		},
+		"Slideshow": {
+			"icon": "slideshow",
+			"scope": [ "albums" ],
+			"settings": {
+				"ss_transition": {
+					"label": "Style",
+					"type": "select",
+					"options": [
+						{ "label": "None", "value": "none" },
+						{ "label": "Slide", "value": "slide" },
+						{ "label": "Fade", "value": "fade" },
+						{ "label": "Dissolve", "value": "dissolve" },
+						{ "label": "Reveal", "value": "reveal" },
+						{ "label": "Flash", "value": "flash" }
+					],
+					"value": "slide"
+				},
+				"ss_click": {
+					"label": "Click action",
+					"type": "select",
+					"options": [
+						{ "label": "Do nothing", "value": "false" },
+						{ "label": "Advance", "value": "advance" },
+						{ "label": "Album detail", "value": "album" },
+						{ "label": "Lightbox", "value": "lightbox" }
+					],
+					"value": "album"
+				},
+				"ss_size": {
+					"label": "Size",
+					"type": "select",
+					"options": [
+						{ "label": "2:1", "value": "2:1" },
+						{ "label": "3:2", "value": "3:2" },
+						{ "label": "4:3", "value": "4:3" },
+						{ "label": "16:9", "value": "16:9" }
+					],
+					"value": "2:1"
+				}
+			}
+		},
+		"Color": {
+			"icon": "color",
+			"settings": {
+				"color_bg": {
+					"label": "Background",
+					"type": "color",
+					"value": "#fff",
+					"control_first": true
+				},
+				"color_text": {
+					"label": "Text",
+					"type": "color",
+					"value": "#555",
+					"control_first": true
+				},
+				"color_headers": {
+					"label": "Headers",
+					"type": "color",
+					"value": "#222",
+					"control_first": true
+				},
+				"color_links": {
+					"label": "Links",
+					"type": "color",
+					"value": "#fa3c24",
+					"control_first": true
+				},
+				"color_links_hover": {
+					"label": "Links hover",
+					"type": "color",
+					"value": "#fa3c24",
+					"control_first": true
+				},
+				"color_nav_link": {
+					"label": "Navigation link",
+					"type": "color",
+					"value": "#666",
+					"control_first": true
+					},
+				"color_nav_link_hover": {
+					"label": "Navigation link hover",
+					"type": "color",
+					"value": "#000",
+					"control_first": true
+					},
+				"color_nav_current": {
+					"label": "Navigation current",
+					"type": "color",
+					"value": "#fa3c24",
+					"control_first": true
+					},
+				"color_meta": {
+					"label": "Meta",
+					"type": "color",
+					"value": "#999",
+					"control_first": true
+				}
+			}
+		},
+		"Discussions": {
+			"icon":"discuss",
+			"settings": {
+				"show_disc_essay": {
+					"label": "Show essay discussions",
+					"note": "Requires a discussion plugin",
+					"type": "boolean",
+					"value": true,
+					"control_first": true,
+					"scope": [ "essay" ]
+				}
+			}
+		},
+		"Social": {
+			"icon":"social",
+			"settings": {
+				"social_bttns_show_one": {
+					"label": "Show share buttons",
+					"type": "boolean",
+					"value": true,
+					"control_first": true
+				}
+			}
+		}
+	}
+}

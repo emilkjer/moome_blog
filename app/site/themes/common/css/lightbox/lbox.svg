@@ -1,0 +1,47 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
+<svg xmlns="http://www.w3.org/2000/svg">
+<metadata>
+Created by FontForge 20100429 at Mon Mar 25 18:33:30 2013
+ By root
+Copyright (C) 2012 by original authors @ fontello.com
+</metadata>
+<defs>
+<font id="lbox" horiz-adv-x="1000" >
+  <font-face 
+    font-family="lbox"
+    font-weight="500"
+    font-stretch="normal"
+    units-per-em="1000"
+    panose-1="2 0 6 3 0 0 0 0 0 0"
+    ascent="850"
+    descent="-150"
+    bbox="0 -150 1000 850"
+    underline-thickness="50"
+    underline-position="-100"
+    unicode-range="U+E047-E0CD"
+  />
+<missing-glyph horiz-adv-x="364" 
+d="M33 0v666h265v-666h-265zM66 33h199v600h-199v-600z" />
+    <glyph glyph-name=".notdef" horiz-adv-x="364" 
+d="M33 0v666h265v-666h-265zM66 33h199v600h-199v-600z" />
+    <glyph glyph-name=".null" horiz-adv-x="0" 
+ />
+    <glyph glyph-name="nonmarkingreturn" horiz-adv-x="333" 
+ />
+    <glyph glyph-name="uniE047" unicode="&#xe047;" 
+d="M0 -4l201 202l-148 146h441v-441l-146 148l-202 -201zM506 356v441l146 -148l202 201l146 -146l-201 -202l148 -146h-441z" />
+    <glyph glyph-name="uniE049" unicode="&#xe049;" 
+d="M0 291l148 -148l202 201l144 -144l-201 -202l148 -148h-441v441zM506 500l201 202l-148 148h441v-441l-148 148l-202 -201z" />
+    <glyph glyph-name="uniE04C" unicode="&#xe04c;" 
+d="M146 704q146 146 354 146t354 -146t146 -354t-146 -354t-354 -146t-354 146t-146 354t146 354zM219 194l125 -125l156 156l156 -156l125 125l-156 156l156 156l-125 125l-156 -156l-156 156l-125 -125l156 -156z" />
+    <glyph glyph-name="uniE05D" unicode="&#xe05d;" horiz-adv-x="625" 
+d="M0 -25v750l625 -375z" />
+    <glyph glyph-name="uniE06A" unicode="&#xe06a;" horiz-adv-x="750" 
+d="M0 725h312v-750h-312v750zM438 -25v750h312v-750h-312z" />
+    <glyph glyph-name="uniE0CC" unicode="&#xe0cc;" horiz-adv-x="648" 
+d="M0 -2l352 352l-352 352l148 148l352 -352l148 -148l-500 -500z" />
+    <glyph glyph-name="uniE0CD" unicode="&#xe0cd;" horiz-adv-x="648" 
+d="M0 350l500 500l148 -148l-351 -352l351 -352l-148 -148z" />
+  </font>
+</defs></svg>

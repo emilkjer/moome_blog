@@ -1,0 +1,77 @@
+<div class="four columns">
+
+	<div class="home-essays">
+
+		<koken:load source="essays" limit="{{ settings.index_essays_num }}">
+
+			<koken:loop>
+
+				<span class="meta"><koken:time show="date" /></span>
+				<h3><koken:link>{{ essay.title }}</koken:link></h3>
+				<p>{{ essay.excerpt truncate="160" }}&nbsp;&nbsp;<koken:link>more</koken:link></p>
+
+			</koken:loop>
+
+		</koken:load>
+
+	</div>
+
+</div>
+
+<div class="twelve columns">
+
+	<koken:load source="featured_albums">
+
+		<koken:shift>
+
+			<div class="home-slideshow">
+
+				<koken:pulse data="album.covers" crop="fill" link_to="album" transition_type="slide" />
+
+			</div>
+
+			<div class="album-meta">
+
+				<koken:if true="settings.index_show_album_title"><h3><koken:link title="{{ album.title }}">{{ album.title }}</koken:link></h3></koken:if>
+
+				<koken:if true="settings.index_show_album_summary">
+					{{ album.summary paragraphs="true" }}
+				</koken:if>
+
+			</div>
+
+		</koken:shift>
+
+		<div id="home-albums">
+
+			<koken:loop>
+
+				<div class="six columns alpha omega">
+
+					<koken:link title="{{ album.title }}">
+						<koken:img size="10:6" class="acover" />
+					</koken:link>
+
+					<div class="album-meta">
+
+						<koken:if true="settings.index_show_album_title"><h3><koken:link title="{{ album.title }}">{{ album.title }}</koken:link></h3></koken:if>
+
+						<koken:if true="settings.index_show_album_summary">
+							{{ album.summary paragraphs="true" }}
+						</koken:if>
+
+					</div>
+
+				</div>
+
+			</koken:loop>
+
+		</div>
+
+		<koken:else>
+
+		This home page layout requires featured albums. Add some in the Library.
+
+	</koken:load>
+
+</div>

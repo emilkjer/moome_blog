@@ -1,0 +1,17 @@
+<koken:include file="inc/header.html" />
+
+<koken:load>
+
+<div id="albums">
+
+<koken:include file="inc/albums-index-loop.html" />
+
+</div> <!-- close #albums -->
+
+<koken:else>
+
+No albums found. Create some in the Library.
+
+</koken:load>
+
+<koken:include file="inc/footer.html" />

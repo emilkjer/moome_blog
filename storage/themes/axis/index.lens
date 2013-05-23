@@ -1,0 +1,18 @@
+<koken:include file="layouts/header.html" />
+
+<div id="main-content">
+
+	<koken:pulse jsvar="pulse" link_to="advance" fallbacktext="No featured photos found. Please assign them in the Library." />
+
+	<script>
+		pulse.on( 'start', function() {
+			$('#slideshow-main').addClass('pulseloading');
+		});
+		pulse.on( 'dataloaded', function() {
+			$('#slideshow-main').removeClass('pulseloading');
+		});
+	</script>
+
+</div>
+
+<koken:include file="layouts/footer.html" />

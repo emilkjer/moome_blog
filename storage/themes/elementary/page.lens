@@ -1,0 +1,24 @@
+<koken:include file="layouts/header.html" />
+
+	<koken:load>
+
+	<koken:head>
+		<meta property="og:title" content="{{ site.title }}: {{ page.title }}" />
+		<meta name="medium" content="blog" />
+	</koken:head>
+
+	<article>
+
+		<header>
+			<h1 class="entry-title">
+				{{ page.title }}
+			</h1>
+		</header>
+
+		{{ page.content }}
+
+	</article>
+
+	</koken:load>
+
+<koken:include file="layouts/footer.html" />

@@ -1,0 +1,22 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:georss="http://www.georss.org/georss" xmlns:media="http://search.yahoo.com/mrss/" version="2.0">
+	<channel>
+		<title>
+			<![CDATA[{{ site.title }}: Recent uploads]]>
+		</title>
+		<link>
+			<![CDATA[<koken:link to="contents" echo="true" />]]>
+		</link>
+		<guid>
+			<![CDATA[<koken:link to="contents" echo="true" />]]>
+		</guid>
+		<lastBuildDate><koken:time raw="true" /></lastBuildDate>
+		<description>
+			<![CDATA[Recently uploaded content from {{ site.title }}]]>
+		</description>
+		<koken:load>
+			<koken:loop>
+				<koken:include file="inc/content.rss.lens" />
+			</koken:loop>
+		</koken:load>
+	</channel>
+</rss>

@@ -1,0 +1,61 @@
+<koken:include file="layouts/header.html" />
+
+<div id="twocol" class="flip">
+
+	<koken:load>
+
+		<koken:head>
+		  <meta property="og:site_name" content="{{ site.title }}" />
+		  <meta property="og:title" content="{{ essay.title strip_html="true" }}" />
+		  <meta property="og:description" content="{{ essay.excerpt strip_html="true" }}" />
+		  <meta property="og:url" content="{{ essay.url }}" />
+		  <meta name="medium" content="article" />
+		</koken:head>
+
+		<article>
+
+			<div class="lcol">
+
+				<koken:include file="layouts/article-aside.html" />
+
+			</div>
+
+			<div class="mcol">
+
+				<header>
+					<h2>
+						<koken:link>{{ essay.title }}</koken:link>
+					</h2>
+				</header>
+
+				{{ essay.content }}
+
+				<koken:if true="settings.show_disc_essay">
+
+					<div id="kdiscuss">
+
+						<koken:discussion>
+
+							{{ discussion }}
+
+						</koken:discussion>
+
+					</div>
+
+				</koken:if>
+
+			</div>
+
+		</article>
+
+		<koken:else>
+
+		No essays found. Create some in Text.
+
+	</koken:load>
+
+</div>
+
+<koken:asset file="js/elem-share.js" />
+
+<koken:include file="layouts/footer.html" />

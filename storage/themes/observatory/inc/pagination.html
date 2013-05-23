@@ -1,0 +1,50 @@
+<koken:pagination>
+
+<ul id="pag">
+
+	<li>
+
+		<span>
+
+			<koken:if condition="{{ page }} > 1">
+
+				<koken:link data="previous_page" title="View page {{ previous_page.number }}">
+					&larr; Newer
+				</koken:link>
+				&nbsp;
+
+			</koken:if>
+
+		</span>
+
+		<span>
+
+			<koken:loop>
+
+				<koken:link class="{{ is_current }}" title="View page {{ number }}">
+					{{ number }}
+				</koken:link>
+				&nbsp;
+
+			</koken:loop>
+
+		</span>
+
+		<span>
+
+			<koken:if condition="{{ page }} < {{ pages }}">
+
+				<koken:link data="next_page" title="View page {{ next_page.number }}">
+					Older &rarr;
+				</koken:link>
+				&nbsp;
+
+			</koken:if>
+
+		</span>
+
+	</li>
+
+</ul>
+
+</koken:pagination>

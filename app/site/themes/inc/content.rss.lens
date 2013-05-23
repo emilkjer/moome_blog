@@ -1,0 +1,32 @@
+<item>
+	<title>
+		<![CDATA[{{ title | filename }}]]>
+	</title>
+	<link>
+		<![CDATA[<koken:permalink />]]>
+	</link>
+	<description>
+		<![CDATA[{{ caption }}]]>
+	</description>
+	<guid>
+		<![CDATA[<koken:permalink />]]>
+	</guid>
+	<pubDate><koken:time rss="true" /></pubDate>
+	<media:title>
+		<![CDATA[{{ title | filename }}]]>
+	</media:title>
+	<media:description>
+		<![CDATA[{{ caption }}]]>
+	</media:description>
+	<koken:if data="content.license.raw" equals="all">
+	<media:copyright>
+		<![CDATA[{{ site.copyright }}]]>
+	</media:copyright>
+	<koken:else>
+	<media:license url="{{ content.license.url }}">
+		<![CDATA[{{ content.license.clean }}]]>
+	</media:license>
+	</koken:if>
+	<media:content url="{{ content.presets.medium_large.url }}" width="{{ content.presets.medium_large.width }}" height="{{ content.presets.medium_large.height }}" type="{{ content.mime_type }}" />
+	<media:thumbnail url="{{ content.presets.small.url }}" width="{{ content.presets.small.width }}" height="{{ content.presets.small.height }}" />
+</item>

@@ -1,0 +1,31 @@
+<aside>
+
+	<h2>Recent {{ labels.essay.plural }}</h2>
+
+	<ul>
+
+	<koken:load source="essays" limit="5">
+
+		<koken:loop>
+
+			<li>
+				<koken:link>
+					{{ essay.title }}
+				</koken:link>
+			</li>
+
+		</koken:loop>
+
+	</koken:load>
+
+	</ul>
+
+</aside>
+
+<aside>
+
+	<h2>Elsewhere</h2>
+
+	<koken:navigation group="essay_aside" fallbacktext="Add links to here through the Essay Aside group in the Site editor" />
+
+</aside>

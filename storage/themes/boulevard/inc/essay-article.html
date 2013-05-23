@@ -1,0 +1,64 @@
+<h1>
+	<koken:link>{{ essay.title }}</koken:link>
+</h1>
+
+{{ essay.content }}
+
+<footer>
+
+     <koken:time show="date" />&nbsp;&nbsp;/&nbsp;&nbsp;<koken:link>Permalink</koken:link><koken:if true="settings.show_share_link">&nbsp;&nbsp;/&nbsp;&nbsp;<div class="share_content"><span class="share_button">Share</span>
+          <div class="kshare">
+               <input type="text" class="kshare-input" value="{{ essay.url }}" />
+               <ul class="kshare-items">
+                    <li>
+                    <koken:if empty="profile.twitter"><a href="https://twitter.com/intent/tweet?text={{ essay.title }}&url={{ essay.url }}" class="share-twitter" title="Share {{ essay.title }} on Twitter"><koken:else><a href="https://twitter.com/intent/tweet?text={{ essay.title }}&url={{ essay.url }}&via={{ profile.twitter }}" class="share-twitter" title="Share {{ essay.title }} on Twitter"></koken:if><i class="kicon-share-twitter"></i></a>
+               </li>
+               <li>
+                    <a target="_blank" href="https://www.facebook.com/sharer.php?u={{ essay.url }}" class="share-facebook"><i class="kicon-share-facebook"></i></a>
+                    </li>
+                    <li>
+                    <a target="_blank" href="http://pinterest.com/pin/create/button/?url={{ essay.url }}" class="share-pinterest"><i class="kicon-share-pinterest"></i></a>
+               </li>
+               <li>
+                    <a target="_blank" href="https://plus.google.com/share?url={{ essay.url }}" class="share-google"><i class="kicon-share-gplus"></i></a>
+               </li>
+              </ul>
+         </div>
+      </div></koken:if>
+
+      <br>
+
+     <koken:if true="settings.essay_show_meta">
+
+     	<koken:topics>
+               Topics:
+               <koken:loop separator=", ">
+                    <koken:link>
+                         {{ album.title }}
+                    </koken:link>
+               </koken:loop>
+           &nbsp;&nbsp;/&nbsp;&nbsp;
+     	</koken:topics>
+
+     	<koken:categories>
+               Categories:
+               <koken:loop separator=", ">
+                    <koken:link>
+                         {{ category.title }}
+                    </koken:link>
+               </koken:loop>
+          &nbsp;&nbsp;/&nbsp;&nbsp;
+     	</koken:categories>
+
+     	<koken:tags>
+               Tags:
+               <koken:loop separator=", ">
+                    <koken:link>
+                         {{ tag.title }}
+                    </koken:link>
+               </koken:loop>
+     	</koken:tags>
+
+     </koken:if>
+
+</footer>

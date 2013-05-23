@@ -1,0 +1,23 @@
+<koken:include file="inc/head.html" />
+
+<koken:load>
+
+	<koken:include file="inc/header-page.html" />
+
+	<div id="text">
+
+		<div class="lcol">
+
+			{{ page.content }}
+
+		</div>
+
+		<div class="rcol">
+
+		</div>
+
+	</div>
+
+</koken:load>
+
+<koken:include file="inc/footer.html" />

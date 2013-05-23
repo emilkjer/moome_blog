@@ -1,0 +1,15 @@
+<item>
+	<title>
+		<![CDATA[{{ title }}]]>
+	</title>
+	<link>
+		<![CDATA[<koken:permalink />]]>
+	</link>
+	<description>
+		<![CDATA[{{ excerpt }}]]>
+	</description>
+	<guid>
+		<![CDATA[<koken:permalink />]]>
+	</guid>
+	<pubDate><koken:time rss="true" /></pubDate>
+</item>

@@ -1,0 +1,89 @@
+<koken:include file="inc/header.html" />
+
+<koken:load infinite="true" limit="15">
+
+<ul class="content-list">
+
+	<koken:loop>
+
+		<li>
+
+			<koken:link>
+
+			<koken:covers>
+			<koken:if data="settings.cover_limit" equals="single">
+				<span class="covers n1">
+					<span class="cover">
+						<koken:first>
+							<koken:img class="content" lazy="true" fade="true" />
+						</koken:first>
+					</span>
+				</span>
+			<koken:else>
+				<span class="covers crop n{{ covers.length }}">
+					<koken:loop>
+					<span class="cover">
+						<koken:img class="content" lazy="true" fade="true" size="{{ settings.cover_size }}" />
+					</span>
+					</koken:loop>
+				</span>
+			</koken:if>
+			</koken:covers>
+
+			</koken:link>
+
+			<span class="img-data">
+
+				<span class="img-caption">
+					<koken:if true="settings.show_album_title">
+						<h4><koken:link title="View {{ album.title }}">{{ album.title }}</koken:link></h4>
+					</koken:if>
+					<koken:if true="settings.show_album_summary">
+						<p>{{ album.summary }}</p>
+					</koken:if>
+				</span>
+
+				<koken:if true="settings.show_album_meta">
+
+					<span class="meta">
+						<koken:categories>
+							<p>
+								<strong>{{ labels.category.plural }}</strong>
+								<koken:loop separator=", ">
+									<koken:link>
+										{{ category.title }}
+									</koken:link>
+								</koken:loop>
+							</p>
+						</koken:categories>
+						<koken:tags>
+							<p>
+								<strong>{{ labels.tag.plural }}</strong>
+								<koken:loop separator=", ">
+									<koken:link>
+										{{ tag.title }}
+									</koken:link>
+								</koken:loop>
+							</p>
+						</koken:tags>
+					</span>
+
+				</koken:if>
+
+			</span>
+
+		</li>
+
+	</koken:loop>
+
+</ul>
+
+<koken:keyboard_scroll element="ul.content-list li" offset="-99" />
+
+<koken:else>
+
+No albums found. Create albums in the Library to fill this page with content.
+
+</koken:load>
+
+<koken:include file="inc/footer.html" />

@@ -1,0 +1,129 @@
+{
+	"Slideshow": {
+		"icon": "slideshow",
+		"settings": {
+
+			"Dimensions": {
+				"size": {
+					"label": "Size",
+					"type": "select",
+					"options": [
+						{ "label": "4:3", "value": "4:3" },
+						{ "label": "3:4", "value": "3:4" },
+						{ "label": "3:2", "value": "3:2" },
+						{ "label": "2:3", "value": "2:3" },
+						{ "label": "2:1", "value": "2:1" },
+						{ "label": "1:1", "value": "1:1" },
+						{ "label": "16:9", "value": "16:9" },
+						{ "label": "Auto", "value": "auto" }
+					],
+					"value": "3:2"
+				}
+			},
+
+			"Playback": {
+				"autostart": {
+					"label": "Auto",
+					"type": "boolean",
+					"value": true
+				},
+
+				"loop": {
+					"label": "Loop",
+					"type": "boolean",
+					"value": true
+				},
+
+				"random": {
+					"label": "Random",
+					"type": "boolean",
+					"value": false
+				},
+
+				"speed": {
+					"label": "Speed",
+					"type": "slider",
+					"min": 0,
+					"max": 20,
+					"step": 1,
+					"value": 3,
+					"suffix": "sec",
+					"dependencies": {
+						"evaluate": "all",
+						"conditions": [
+							{
+								"option": "autostart",
+								"equals": true
+							}
+						]
+					}
+				}
+			},
+
+			"Images": {
+
+				"link_to": {
+					"label": "Click action",
+					"type": "select",
+					"options": [
+						{ "label": "Do nothing", "value": "false" },
+						{ "label": "Advance slideshow", "value": "advance" },
+						{ "label": "Toggle playback", "value": "playback" },
+						{ "label": "Load content page", "value": "content" },
+						{ "label": "Load lightbox page", "value": "lightbox" },
+						{ "label": "Load album page", "value": "album" }
+					],
+					"value": "false"
+				},
+
+				"crop": {
+					"label": "Crop",
+					"type": "select",
+					"options": [
+						{ "label": "None", "value": "none" },
+						{ "label": "Fill", "value": "fill" },
+						{ "label": "Adaptive", "value": "adaptive" },
+						{ "label": "Landscape", "value": "landscape" },
+						{ "label": "Portrait", "value": "portrait" }
+					],
+					"value": "none"
+				}
+			},
+
+			"Transition": {
+
+				"transition_type": {
+					"label": "Style",
+					"type": "select",
+					"options": [
+						{ "label": "None", "value": "none" },
+						{ "label": "Dissolve", "value": "dissolve" },
+						{ "label": "Fade", "value": "fade" }
+					],
+					"value": "dissolve"
+				},
+
+				"transition_duration": {
+					"label": "Duration",
+					"type": "slider",
+					"min": 100,
+					"max": 5000,
+					"step": 100,
+					"value": 500,
+					"suffix": "ms",
+					"dependencies": {
+						"evaluate": "all",
+						"conditions": [
+							{
+								"option": "transition_type",
+								"not": "none"
+							}
+						]
+					}
+				}
+			}
+
+		}
+
+	}
+}

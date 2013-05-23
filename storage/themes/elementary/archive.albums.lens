@@ -1,0 +1,31 @@
+<koken:include file="layouts/header.html" />
+
+<koken:load>
+
+<div class="head">
+
+	<h2>{{ labels.album.plural }} / {{ archive.title }}</h2>
+
+</div>
+
+<div class="albums">
+
+	<ol class="thumbs">
+
+		<koken:loop>
+			<koken:include file="layouts/album_index_loop.html" />
+		</koken:loop>
+
+	</ol>
+
+</div>
+
+<koken:include file="layouts/pagination.html" />
+
+<koken:else>
+
+	No albums found.
+
+</koken:load>
+
+<koken:include file="layouts/footer.html" />

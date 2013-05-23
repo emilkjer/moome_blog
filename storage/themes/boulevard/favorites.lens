@@ -1,0 +1,44 @@
+<koken:if false="pjax">
+	<koken:include file="inc/head.html" />
+</koken:not>
+
+<koken:load infinite="true">
+
+	<koken:if false="pjax">
+		<koken:include file="inc/header-faves.html" />
+		<div id="lane">
+	</koken:not>
+
+	<koken:loop>
+
+		<div class="cell">
+
+			<koken:img lazy="true" fade="true" respond_to="height" />
+
+			<koken:if true="settings.show_image_caption">
+
+				<span class="caption">
+					{{ content.title }}
+				</span>
+
+			</koken:if>
+
+		</div>
+
+	</koken:loop>
+
+	<koken:if false="pjax">
+		</div>
+	</koken:not>
+
+<koken:else>
+
+<p class="null">
+	This page displays favorites. Assign some in the Library.
+</p>
+
+</koken:load>
+
+<koken:if false="pjax">
+	<koken:include file="inc/footer.html" />
+</koken:not>

@@ -1,0 +1,46 @@
+<li class="album">
+
+<koken:link class="thumb">
+	<koken:img size="1.5:1" />
+</koken:link>
+
+<div class="t-text">
+
+	<koken:if true="settings.albums_index_show_title">
+
+	<h3>
+		<koken:link>
+			{{ album.title }}
+		</koken:link>
+	</h3>
+
+	</koken:if>
+
+	<koken:if data="settings.albums_index_show_caption" equals="Summary">
+		<koken:not empty="album.summary">
+		<p>
+			<koken:if true="settings.albums_index_truncate">
+				{{ album.summary truncate="130" }}
+			<koken:else>
+				{{ album.summary }}
+			</koken:if>
+		</p>
+		</koken:not>
+	</koken:if>
+
+	<koken:if data="settings.albums_index_show_caption" equals="Description">
+		<koken:not empty="album.description">
+		<p>
+			<koken:if true="settings.albums_index_truncate">
+				{{ album.description truncate="130" }}
+				<koken:link title="More">More</koken:link>
+			<koken:else>
+				{{ album.description }}
+			</koken:if>
+		</p>
+		</koken:not>
+	</koken:if>
+
+</div>
+
+</li>

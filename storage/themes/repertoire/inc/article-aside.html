@@ -1,0 +1,44 @@
+<aside>
+
+	<h4>Published</h4>
+	<p>
+		<span class="meta">{{ essay.published_on }}</span>
+	</p>
+
+	<koken:categories>
+		<h4>{{ labels.category.plural }}</h4>
+		<p>
+			<span class="meta">
+				<koken:loop separator=", ">
+					<koken:link>
+						{{ category.title }}
+					</koken:link>
+				</koken:loop>
+			</span>
+		</p>
+	</koken:categories>
+
+	<koken:tags>
+		<h4>{{ labels.tag.plural }}</h4>
+		<p>
+			<span class="meta">
+				<koken:loop separator=", ">
+					<koken:link>
+						{{ tag.title }}
+					</koken:link>
+				</koken:loop>
+			</span>
+		</p>
+	</koken:tags>
+
+	<koken:if true="settings.social_bttns_show_one">
+		<h4>Share</h4>
+		<ul class="social-links">
+			<li><koken:if empty="profile.twitter"><a href="https://twitter.com/intent/tweet?text={{ essay.title }}&url={{ essay.url }}" class="share-twitter" title="Share {{ essay.title }} on Twitter"><koken:else><a href="https://twitter.com/intent/tweet?text={{ essay.title }}&url={{ essay.url }}&via={{ profile.twitter }}" class="share-twitter" title="Share {{ essay.title }} on Twitter"></koken:if><i class="kicon-share-twitter"></i></a></li>
+			<li><a href="https://www.facebook.com/sharer.php?u={{ essay.url }}" class="share-facebook" title="Share {{ essay.title }} on Facebook"><i class="kicon-share-facebook"></i></a></li>
+			<li><a href="https://plus.google.com/share?url={{ essay.url }}" class="share-google" title="Share {{ essay.url }} on Google+"><i class="kicon-share-gplus"></i></a></li>
+		</ul>
+		<koken:asset file="js/rep-share.js" />
+	</koken:if>
+
+</aside>

@@ -1,0 +1,33 @@
+<koken:include file="layouts/header.html" />
+
+<koken:load limit="{{ settings.content_index_limit }}">
+
+<div class="head">
+
+	<h2>
+		{{ labels.content.plural }} / {{ archive.title }}
+	</h2>
+
+</div>
+
+<div class="stream">
+
+	<ol class="thumbs">
+
+		<koken:loop>
+			<koken:include file="layouts/content_list_item.html" />
+		</koken:loop>
+
+	</ol>
+
+</div>
+
+<koken:include file="layouts/pagination.html" />
+
+<koken:else>
+
+	No content found.
+
+</koken:load>
+
+<koken:include file="layouts/footer.html" />

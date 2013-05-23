@@ -1,0 +1,65 @@
+<koken:include file="inc/header.html" />
+
+<koken:load>
+
+	<koken:head>
+	  <meta property="og:site_name" content="{{ site.title }}" />
+	  <meta property="og:title" content="{{ essay.title strip_html="true" }}" />
+	  <meta property="og:description" content="{{ essay.excerpt strip_html="true" }}" />
+	  <meta property="og:url" content="{{ essay.url }}" />
+	  <meta name="medium" content="article" />
+	</koken:head>
+
+	<article>
+
+		<koken:include file="inc/article.html" />
+
+		<koken:if true="settings.social_bttns_show_one">
+
+			<ul class="social-links">
+				<li><koken:if empty="profile.twitter"><a href="https://twitter.com/intent/tweet?text={{ essay.title }}&url={{ essay.url }}" class="share-twitter" title="Share {{ essay.title }} on Twitter"><koken:else><a href="https://twitter.com/intent/tweet?text={{ essay.title }}&url={{ essay.url }}&via={{ profile.twitter }}" class="share-twitter" title="Share {{ essay.title }} on Twitter"></koken:if><i class="kicon-share-twitter"></i></a></li>
+				<li><a target="_blank" href="https://www.facebook.com/sharer.php?u={{ essay.url }}" class="share-facebook" title="Share {{ essay.title }} on Facebook"><i class="kicon-share-facebook"></i></a></li>
+				<li><a target="_blank" href="https://plus.google.com/share?url={{ essay.url }}" class="share-google" title="Share {{ essay.url }} on Google+"><i class="kicon-share-gplus"></i></a></li>
+			</ul>
+
+			<koken:asset file="js/obs-share.js" />
+
+		</koken:if>
+
+		<koken:if true="settings.social_bttns_show_two">
+
+			<div id="social-bttns">
+				<div class="cell left">
+					<div style="float:right;">
+						<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+					</div>
+				</div>
+				<div class="cell right">
+					<div style="float:left;">
+						<a class="addthis_button_tweet"></a>
+					</div>
+				</div>
+				<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+			</div>
+
+		</koken:if>
+
+		<koken:if true="settings.show_disc_essay">
+
+			<div id="kdiscuss">
+
+				<koken:discussion>
+
+					{{ discussion }}
+
+				</koken:discussion>
+
+			</div>
+
+		</koken:if>
+
+	</article>
+
+</koken:load>
+
+<koken:include file="inc/footer.html" />

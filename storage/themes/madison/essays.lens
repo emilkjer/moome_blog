@@ -1,0 +1,37 @@
+<koken:if true="pjax">
+	<koken:title />
+<koken:else>
+	<koken:include file="layouts/header.html" />
+</koken:if>
+
+<div id="main">
+
+<koken:load limit="10">
+
+	<koken:loop>
+
+		<article>
+
+			<koken:include file="layouts/essay.html" />
+
+		</article>
+
+	</koken:loop>
+
+	<koken:keyboard_scroll element="article" />
+
+	<koken:include file="layouts/pagination.html" />
+
+	<koken:else>
+
+	No essays found. Create some in Text.
+
+</koken:load>
+
+</div>
+
+<koken:if true="pjax">
+	<script>$K.ready();</script>
+<koken:else>
+	<koken:include file="layouts/footer.html" />
+</koken:not>

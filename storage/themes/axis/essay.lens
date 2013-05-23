@@ -1,0 +1,51 @@
+<koken:include file="layouts/header.html" />
+
+<koken:load>
+
+	<koken:head>
+	  <meta property="og:site_name" content="{{ site.title }}" />
+	  <meta property="og:title" content="{{ essay.title strip_html="true" }}" />
+	  <meta property="og:description" content="{{ essay.excerpt strip_html="true" }}" />
+	  <meta property="og:url" content="{{ essay.url }}" />
+	  <meta name="medium" content="article" />
+	</koken:head>
+
+	<article>
+
+    	<koken:include file="layouts/article.html" />
+
+    	<footer>
+
+		  <koken:if true="settings.social_bttns_show_one">
+
+		    <ul class="social-links">
+		      <li><koken:if empty="profile.twitter"><a href="https://twitter.com/intent/tweet?text={{ essay.title }}&url={{ essay.url }}" class="share-twitter" title="Share {{ essay.title }} on Twitter"><koken:else><a href="https://twitter.com/intent/tweet?text={{ essay.title }}&url={{ essay.url }}&via={{ profile.twitter }}" class="share-twitter" title="Share {{ essay.title }} on Twitter"></koken:if><i class="kicon-share-twitter"></i></a></li>
+		      <li><a target="_blank" href="https://www.facebook.com/sharer.php?u={{ essay.url }}" class="share-facebook" title="Share {{ essay.title }} on Facebook"><i class="kicon-share-facebook"></i></a></li>
+		      <li><a target="_blank" href="https://plus.google.com/share?url={{ essay.url }}" class="share-google" title="Share {{ essay.url }} on Google+"><i class="kicon-share-gplus"></i></a></li>
+		    </ul>
+
+		    <koken:asset file="js/axis-share.js" />
+
+		  </koken:if>
+
+		</footer>
+
+		<koken:if true="settings.show_disc_essay">
+
+			<div id="kdiscuss">
+
+		    	<koken:discussion>
+
+					{{ discussion }}
+
+				</koken:discussion>
+
+			</div>
+
+		</koken:if>
+
+	</article>
+
+</koken:load>
+
+<koken:include file="layouts/footer.html" />

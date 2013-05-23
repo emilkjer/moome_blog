@@ -1,0 +1,244 @@
+<koken:include file="inc/header.html" />
+
+<koken:load>
+
+	<koken:head>
+		<meta property="og:site_name" content="{{ site.title }}" />
+		<meta property="og:title" content="{{ content.title|content.filename strip_html="true" }}" />
+		<meta property="og:description" content="{{ content.caption strip_html="true" }}" />
+		<meta property="og:type" content="website" />
+		<meta property="og:image" content="{{ content.presets.medium_large.url }}" />
+		<meta property="og:image:width" content="{{ content.presets.medium_large.width }}" />
+		<meta property="og:image:height" content="{{ content.presets.medium_large.height }}" />
+		<meta property="og:url" content="{{ content.url }}" />
+		<koken:content_image>
+			<koken:not empty="profile.twitter">
+				<meta name="twitter:card" content="photo" />
+				<meta name="twitter:site" content="@{{ profile.twitter }}" />
+				<meta name="twitter:creator" content="@{{ profile.twitter }}" />
+			</koken:not>
+		</koken:content_image>
+	</koken:head>
+
+	<div id="mob-pag" class="content-row">
+
+		<div class="content-wrap">
+
+			<koken:previous>
+				<koken:link class="pag" title="Previous" bind_to_key="left">&larr; Previous</koken:link>
+			</koken:previous>
+
+			&nbsp;&nbsp;
+
+			<koken:next>
+				<koken:link class="pag" title="Next" bind_to_key="right">Next &rarr;</koken:link>
+			</koken:next>
+
+		</div>
+
+	</div>
+
+	<div class="content-row">
+
+		<div class="content-wrap">
+
+			<ul class="content-detail">
+
+				<li>
+					<span class="l">
+						<koken:previous>
+							<koken:link class="pag" title="Previous">&larr; Previous</koken:link>
+						</koken:previous>
+					</span>
+					<span class="m">
+						<h3>{{ content.title | content.filename }}</h3>
+						{{ content.caption }}
+					</span>
+					<span class="r">
+						<koken:next>
+							<koken:link class="pag" title="Next">Next &rarr;</koken:link>
+						</koken:next>
+					</span>
+				</li>
+
+			</ul>
+
+		</div>
+
+	</div>
+
+	<div class="list-image">
+
+		<koken:content_image>
+
+			<koken:img lazy="true" fade="true" />
+
+		</koken:content_image>
+
+		<koken:content_video>
+
+			<koken:video controls="true" />
+
+		</koken:content_video>
+
+		<koken:if true="settings.show_exif">
+			<koken:exif>
+				<ol class="exif">
+					<koken:not empty="exif.aperture">
+						<li>
+							{{ exif.aperture }}
+						</li>
+					</koken:not>
+					<koken:not empty="exif.exposure">
+						<li>
+							{{ exif.exposure }}
+						</li>
+					</koken:not>
+					<koken:not empty="exif.focal_length">
+						<li>
+							{{ exif.focal_length }}
+						</li>
+					</koken:not>
+					<koken:not empty="exif.iso_speed_ratings">
+						<li>
+							{{ exif.iso_speed_ratings }}
+						</li>
+	    		 </koken:not>
+	    		</ol>
+			</koken:exif>
+		</koken:if>
+
+	</div>
+
+	<koken:if true="settings.social_bttns_show_one">
+
+		<ul class="social-links">
+			<li><koken:if empty="profile.twitter"><a target="_blank" href="https://twitter.com/intent/tweet?text={{ content.title|content.filename }}&url={{ content.url }}" class="share-twitter"><koken:else><a target="_blank" href="https://twitter.com/intent/tweet?text={{ content.title|content.filename }}&url={{ content.url }}&via={{ profile.twitter }}" class="share-twitter"></koken:if><i class="kicon-share-twitter"></i></a></li>
+			<li><a href="https://www.facebook.com/sharer.php?u={{ content.url }}" class="share-facebook" title="Share {{ content.title | content.filename }} on Facebook"><i class="kicon-share-facebook"></i></a></li>
+			<li><a href="http://pinterest.com/pin/create/button/?url={{ content.url }}&media={{ content.presets.large.url }}&description={{ content.title|content.filename }}" class="share-pinterest" title="Share {{ content.title|content.filename }} on Pinterest"><i class="kicon-share-pinterest"></i></a></li>
+			<li><a href="https://plus.google.com/share?url={{ content.url }}" class="share-google" title="Share {{ content.url }} on Google+"><i class="kicon-share-gplus"></i></a></li>
+		</ul>
+
+		<koken:asset file="js/obs-share.js" />
+
+	</koken:if>
+
+	<koken:if true="settings.social_bttns_show_two">
+
+		<div id="social-bttns">
+			<div class="cell left">
+				<div style="float:right;">
+					<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+				</div>
+			</div>
+			<div class="cell right">
+				<div style="float:left;">
+					<a class="addthis_button_tweet"></a>
+				</div>
+			</div>
+			<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+		</div>
+
+	</koken:if>
+
+	<koken:if true="settings.cd_show_more">
+
+		<koken:if data="settings.cd_more_type" equals="neighbors">
+
+			<koken:parent>
+
+				<div class="content-row">
+					<koken:link title="View" title="{{ album.title }}" bind_to_key="up"><h3>More from {{ album.title }}<h3></koken:link>
+				</div>
+
+			</koken:parent>
+
+			<koken:neighbors count="8">
+
+				<ul class="neighbors">
+
+					<koken:previous>
+						<koken:loop>
+
+							<li>
+								<koken:link title="View {{ content.title }}">
+									<koken:img preset="tiny" crop="true" width="60" height="60" />
+								</koken:link>
+							</li>
+
+						</koken:loop>
+					</koken:previous>
+
+					<li class="current">
+						<koken:img preset="tiny" crop="true" width="60" height="60" />
+					</li>
+
+					<koken:next>
+						<koken:loop>
+
+							<li>
+								<koken:link title="View {{ content.title }}">
+									<koken:img preset="tiny" crop="true" width="60" height="60" />
+								</koken:link>
+							</li>
+
+						</koken:loop>
+					</koken:next>
+
+				</ul>
+
+			</koken:neighbors>
+
+		</koken:if>
+
+	</koken:if>
+
+	<koken:if true="settings.show_disc_content">
+
+		<div id="kdiscuss">
+
+			<koken:discussion>
+
+				{{ discussion }}
+
+			</koken:discussion>
+
+		</div>
+
+	</koken:if>
+
+	<koken:if true="settings.cd_show_more">
+
+		<koken:if data="settings.cd_more_type" equals="grid">
+
+			<koken:parent>
+
+				<div id="foot-more">
+
+					<div class="content-row">
+
+						<koken:link title="View" title="{{ album.title }}" bind_to_key="up"><h3>More from {{ album.title }}<h3></koken:link>
+
+					</div>
+
+					<koken:include file="inc/loop-content-grid.html" />
+
+					<koken:else>
+
+					<koken:load source="contents">
+
+						<koken:include file="inc/loop-content-grid.html" />
+
+					</koken:load>
+
+				</div>
+
+			</koken:parent>
+
+		</koken:if>
+
+	</koken:if>
+
+</koken:load>
+
+<koken:include file="inc/footer.html" />

@@ -1,0 +1,9 @@
+<koken:include file="inc/header.html" />
+
+<div class="row">
+
+	<koken:include file="inc/index-layout-{{ settings.index_layout }}.html" />
+
+</div>
+
+<koken:include file="inc/footer.html" />

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <body class="ie6"> <![endif]-->
+<!--[if IE 7 ]>    <body class="ie7"> <![endif]-->
+<!--[if IE 8 ]>    <body class="ie8"> <![endif]-->
+<!--[if IE 9 ]>    <body class="ie9"> <![endif<]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="description" content="{{ site.description }}" />
+	<meta name="author" content="{{ site.title }}" />
+	<meta name="keywords" content="{{ site.keywords }}" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+	<koken:title />
+
+	<koken:asset file="reset.css" common="true" />
+	<koken:asset file="animate.css" common="true" />
+	<koken:asset file="css/screen.css" />
+	<koken:asset file="css/kessayicons.css" />
+	<koken:if true="settings.show_share_link"><koken:asset file="css/kshare.css" /></koken:if>
+	<koken:settings />
+
+	<koken:asset file="js/jquery.smooth-scroll.min.js" />
+	<koken:asset file="js/jquery.sidr.min.js" />
+	<koken:asset file="jquery.pjax.js" common="true" />
+
+</head>
+
+<body>
+
+	<div id="sidr-left" class="mob">
+ 		<koken:include file="layouts/nav.html" />
+	</div>
+
+	<div id="page">
+
+		<div id="col">
+
+			<div class="in">
+
+				<div id="mob-bttn-row"><a id="mob-menu" href="#mob-menu" title="Open mobile menu"><i class="kicon-mob-menu"></i></a></div>
+
+				<header class="top">
+					<hgroup>
+						<koken:if data="settings.site_title_type" equals="text">
+							<h1><koken:link to="front">{{ site.title }}</koken:link></h1>
+							<koken:if true="settings.show_tagline">
+								<span class="tagline">{{ site.tagline }}</span>
+							</koken:if>
+						<koken:else>
+							<koken:link to="front"><img src="{{ settings.site_title_img_url }}" alt="{{ site.title }}" class="custom_logo"></koken:link>
+						</koken:if>
+					</hgroup>
+				</header>
+
+				<nav>
+					<koken:include file="layouts/nav.html" />
+				</nav>
+
+				<koken:if true="settings.show_social">
+				<p>
+					<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+					<br>
+					<a class="addthis_button_tweet"></a>
+					<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+				</p>
+				</koken:if>
+
+				<p>
+					{{ site.copyright }}
+				</p>
+
+			</div>
+
+		</div> <!-- close col -->
+
+		<div id="target">

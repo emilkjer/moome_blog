@@ -1,0 +1,79 @@
+<koken:include file="inc/header.html" />
+
+<koken:load infinite="true" limit="15">
+
+<div class="top">
+
+	<h3>{{ archive.type.plural case="titlecase" }}</h3>
+
+	{{ archive.title }}
+
+</div>
+
+<ul class="content-list">
+
+	<koken:loop>
+
+		<li>
+
+			<span class="img-wrap">
+				<koken:link><koken:img class="content" lazy="true" fade="true" /></koken:link>
+			</span>
+
+			<span class="img-data">
+
+				<span class="img-caption">
+					<h4><koken:link title="View {{ album.title }}">{{ album.title }}</koken:link></h4>
+					{{ album.summary }}
+				</span>
+
+				<span class="meta">
+					<koken:categories>
+						<p>
+							<strong>{{ labels.category.plural }}</strong>
+							<koken:loop separator=", ">
+								<koken:link>
+									{{ category.title }}
+								</koken:link>
+							</koken:loop>
+						</p>
+					</koken:categories>
+					<koken:tags>
+						<p>
+							<strong>{{ labels.tag.plural }}</strong>
+							<koken:loop separator=", ">
+								<koken:link>
+									{{ tag.title }}
+								</koken:link>
+							</koken:loop>
+						</p>
+					</koken:tags>
+				</span>
+
+			</span>
+
+		</li>
+
+	</koken:loop>
+
+</ul>
+
+<div class="bot">
+
+	<ul>
+		<li>
+			<span class="cell">
+				<koken:link to="albums">View all {{ labels.album.plural case="lowercase" }}</koken:link>
+			</span>
+		</li>
+	</ul>
+
+</div>
+
+<koken:else>
+
+	No albums found.
+
+</koken:load>
+
+<koken:include file="inc/footer.html" />

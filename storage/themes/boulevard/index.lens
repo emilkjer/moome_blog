@@ -1,0 +1,34 @@
+<koken:if false="pjax">
+	<koken:include file="inc/head.html" />
+	<koken:include file="inc/header-index.html" />
+	<div id="lane">
+</koken:if>
+
+<koken:load infinite="true" source="featured_albums">
+
+	<koken:loop>
+		<div class="cell">
+			<koken:link>
+				<koken:img respond_to="height" lazy="true" fade="true" />
+			</koken:link>
+			<koken:if true="settings.show_strip_title">
+				<span class="caption">
+					<koken:link>
+						{{ album.title }}
+					</koken:link>
+				</span>
+			</koken:if>
+		</div>
+	</koken:loop>
+
+<koken:else>
+
+<p class="null">
+	This page displays featured albums. Assign some in the Library.
+</p>
+
+</koken:load>
+<koken:if false="pjax">
+	</div>
+	<koken:include file="inc/footer.html" />
+</koken:not>

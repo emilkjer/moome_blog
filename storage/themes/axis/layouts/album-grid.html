@@ -1,0 +1,58 @@
+<div id="grid">
+
+	<ul id="album-grid">
+
+		<koken:loop>
+
+			<li>
+
+				<koken:if true="settings.grid_link_lightbox">
+
+					<koken:link lightbox="true"><koken:img lazy="true" fade="true" /></koken:link>
+
+				<koken:else>
+
+					<koken:link><koken:img lazy="true" fade="true" /></koken:link>
+
+				</koken:if>
+
+				<koken:if true="settings.show_grid_title">
+
+					<h3>
+						{{ content.title | content.filename }}
+					</h3>
+
+				</koken:if>
+
+			</li>
+
+		</koken:loop>
+
+	</ul>
+
+</div>
+
+<br>
+
+<koken:include file="layouts/pagination-grid.html" />
+
+<koken:asset file="js/jquery.wookmark.min.js" />
+
+<script type="text/javascript">
+
+	$(function() {
+		var options = {
+	        container: $('#grid'),
+	        offset: {{ settings.grid_img_off }},
+	        itemWidth: {{ settings.grid_img_w }}
+	      };
+      	var handler = $('#album-grid li');
+      	function layout() {
+      		handler.wookmark(options);
+      	}
+      	$(window).on('k-resize', function() {
+	        layout();
+	    });
+      	layout();
+	});
+</script>

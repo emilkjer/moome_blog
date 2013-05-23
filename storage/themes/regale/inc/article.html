@@ -1,0 +1,61 @@
+<article>
+
+	<header>
+
+		<koken:time show="date" />
+
+        <h2><koken:link>{{ essay.title }}</koken:link></h2>
+
+    </header>
+
+    {{ essay.content }}
+
+    <span class="meta">
+
+         <koken:topics>
+              <p>
+                   <strong>Topics:</strong>
+                   <koken:loop separator=", ">
+                        <koken:link>
+                             {{ album.title }}
+                        </koken:link>
+                   </koken:loop>
+              </p>
+         </koken:topics>
+
+         <koken:categories>
+              <p>
+                   <strong>{{ labels.category.plural }}:</strong>
+                   <koken:loop separator=", ">
+                        <koken:link>
+                             {{ category.title }}
+                        </koken:link>
+                   </koken:loop>
+              </p>
+         </koken:categories>
+
+         <koken:tags>
+              <p>
+                   <strong>{{ labels.tag.plural}}:</strong>
+                   <koken:loop separator=", ">
+                        <koken:link>
+                             {{ tag.title }}
+                        </koken:link>
+                   </koken:loop>
+              </p>
+         </koken:tags>
+
+         <koken:if true="settings.social_bttns_show_one">
+
+            <strong>Share:</strong>
+            <ul class="social-links"><li><koken:if empty="profile.twitter"><a href="https://twitter.com/intent/tweet?text={{ essay.title }}&url={{ essay.url }}" class="share-twitter" title="Share {{ essay.title }} on Twitter"><koken:else><a href="https://twitter.com/intent/tweet?text={{ essay.title }}&url={{ essay.url }}&via={{ profile.twitter }}" class="share-twitter" title="Share {{ essay.title }} on Twitter"></koken:if><i class="kicon-share-twitter"></i></a></li>
+            <li><a href="https://www.facebook.com/sharer.php?u={{ essay.url }}" class="share-facebook" title="Share {{ essay.title }} on Facebook">Facebook</a></li>
+            <li><a href="https://plus.google.com/share?url={{ essay.url }}" class="share-google" title="Share {{ essay.url }} on Google+">Google+</a></li>
+
+            <koken:asset file="js/regale-share.js" />
+
+        </koken:if>
+
+    </span>
+
+</article>

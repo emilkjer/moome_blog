@@ -1,0 +1,550 @@
+{
+	"name": "Axis",
+	"version": "1.2.2",
+	"description": "Basic theme with support for featured content and collections only. Excellent for browsing album content with minimal fuss. Theme preview photo by Mathias Erhart.",
+	"demo": "http://koken.me",
+	"author": {
+		"name": "Koken",
+		"link": "http://koken.me"
+	},
+	"koken_version_required": "0.8.0-beta.1",
+
+	"styles": {
+		"white": {
+			"label": "White",
+			"variables": {
+				"background_color": "#fff",
+				"title_color": "#000",
+				"body_color": "#808080",
+				"header_color": "#000",
+				"link_color": "#000",
+				"link_hover_color": "#000",
+				"nav_link_color": "#808080",
+				"nav_link_hover_color": "#000",
+				"current_color": "#000"
+			}
+		},
+		"black": {
+			"label": "Black",
+			"variables": {
+				"background_color": "#000",
+				"title_color": "#ccc",
+				"body_color": "#666",
+				"header_color": "#ccc",
+				"link_color": "#ccc",
+				"link_hover_color": "#fff",
+				"nav_link_color": "#666",
+				"nav_link_hover_color": "#ccc",
+				"current_color": "#ccc"
+			}
+		}
+	},
+
+	"settings": {
+		"Typography": {
+			"icon": "type",
+			"settings": {
+				"font": {
+					"label": "Site typeface",
+					"type": "select",
+					"options": [
+						{ "label": "PT Sans", "value": "ptsans" },
+						{ "label": "Noto Sans", "value": "notosans" },
+						{ "label": "Source Sans Pro", "value": "sourcesanspro" },
+						{ "label": "Roboto", "value": "roboto" },
+						{ "label": "Helvetica Neue", "value": "helvetica" }
+					],
+					"value": "ptsans"
+				}
+			}
+		},
+		"Layout": {
+			"icon": "layout",
+			"settings": {
+				"site_max_width": {
+					"label": "Site max width",
+					"type": "slider",
+					"min": 650,
+					"max": 1280,
+					"step": 10,
+					"value": 920,
+					"suffix": "px"
+				},
+				"album_layout": {
+					"label": "Album layout",
+					"type": "select",
+					"options": [
+						{ "label":"Slideshow", "value": "slideshow" },
+						{ "label":"Image grid", "value": "grid" }
+					],
+					"value": "slideshow",
+					"scope": [ "album" ]
+				},
+				"grid_img_w": {
+					"label": "Grid image width",
+					"type": "slider",
+					"min": 80,
+					"max": 400,
+					"value": 210,
+					"step": 1,
+					"suffix": "px",
+					"dependencies": {
+	                    "evaluate": "all",
+	                    "conditions": [
+	                         {
+	                              "option": "album_layout",
+	                              "equals": "grid"
+	                         }
+	                    ]
+	               	}
+				},
+				"grid_img_off": {
+					"label": "Grid offset",
+					"type": "slider",
+					"min": 1,
+					"max": 40,
+					"value": 20,
+					"step": 1,
+					"suffix": "px",
+					"dependencies": {
+	                    "evaluate": "all",
+	                    "conditions": [
+	                         {
+	                              "option": "album_layout",
+	                              "equals": "grid"
+	                         }
+	                    ]
+	               	}
+				}
+			}
+		},
+		"Navigation": {
+			"icon": "nav",
+			"settings": {
+				"nav_spacing": {
+					"label": "Spacing",
+					"type": "slider",
+					"min": 0,
+					"max": 50,
+					"step": 1,
+					"value": 8,
+					"suffix": "px"
+				}
+			}
+		},
+		"Site title": {
+			"icon":"type",
+			"settings": {
+				"site_title_type": {
+					"label": "Type",
+					"type": "select",
+					"options": [
+						{ "label": "Text", "value": "text" },
+						{ "label": "Image", "value": "image" }
+					],
+					"value": "text"
+				},
+				"site_title_size": {
+					"label": "Size",
+					"type": "slider",
+					"min": 11,
+					"max": 56,
+					"step": 1,
+					"value": 21,
+					"suffix": "px",
+					"dependencies": {
+	                    "evaluate": "all",
+	                    "conditions": [
+	                         {
+	                              "option": "site_title_type",
+	                              "equals": "text"
+	                         }
+	                    ]
+	               }
+				},
+				"site_title_case": {
+					"label": "Transform",
+					"type": "select",
+					"options": [
+						{ "label":"Uppercase", "value":"uppercase" },
+						{ "label":"Lowercase", "value":"lowercase" },
+						{ "label":"Capitalize", "value":"capitalize" },
+						{ "label":"None", "value":"none" }
+					],
+					"value": "uppercase",
+					"dependencies": {
+	                    "evaluate": "all",
+	                    "conditions": [
+	                         {
+	                              "option": "site_title_type",
+	                              "equals": "text"
+	                         }
+	                    ]
+	               }
+				},
+				"site_title_lh": {
+					"label": "Line height",
+					"type": "slider",
+					"min": 1,
+					"max": 4,
+					"step": 0.1,
+					"value": 1.5,
+					"dependencies": {
+	                    "evaluate": "all",
+	                    "conditions": [
+	                         {
+	                              "option": "site_title_type",
+	                              "equals": "text"
+	                         }
+	                    ]
+	               }
+				},
+				"site_title_spacing": {
+					"label": "Spacing",
+					"type": "slider",
+					"min": 0,
+					"max": 50,
+					"step": 1,
+					"value": 4,
+					"suffix": "px",
+					"dependencies": {
+	                    "evaluate": "all",
+	                    "conditions": [
+	                         {
+	                              "option": "site_title_type",
+	                              "equals": "text"
+	                         }
+	                    ]
+	               }
+				},
+				"site_title_weight": {
+					"label": "Weight",
+					"type": "select",
+					"options": [
+						{ "label":"400", "value":"400" },
+						{ "label":"600", "value":"600" }
+					],
+					"value":"400",
+					"dependencies": {
+	                    "evaluate": "all",
+	                    "conditions": [
+	                         {
+	                              "option": "site_title_type",
+	                              "equals": "text"
+	                         }
+	                    ]
+	               }
+				},
+				"show_tagline": {
+					"label": "Show tagline",
+					"type": "boolean",
+					"value": "true",
+					"dependencies": {
+	                    "evaluate": "all",
+	                    "conditions": [
+	                         {
+	                              "option": "site_title_type",
+	                              "equals": "text"
+	                         }
+	                    ]
+	               }
+				},
+				"site_title_img_url": {
+					"label": "Image URL",
+					"type": "string",
+					"value": "",
+					"dependencies": {
+	                    "evaluate": "all",
+	                    "conditions": [
+	                         {
+	                              "option": "site_title_type",
+	                              "equals": "image"
+	                         }
+	                    ]
+	               }
+				},
+				"site_title_img_scale_mobile": {
+					"label": "Mobile scale",
+					"type": "slider",
+					"min": 0.1,
+					"max": 1,
+					"step": 0.1,
+					"value": 0.5,
+					"dependencies": {
+	                    "evaluate": "all",
+	                    "conditions": [
+	                         {
+	                              "option": "site_title_type",
+	                              "equals": "image"
+	                         }
+	                    ]
+	               }
+				}
+			}
+		},
+		"Text": {
+			"icon": "type",
+			"settings": {
+				"show_album_title": {
+					"label": "Show title",
+					"type": "boolean",
+					"value": false,
+					"control_first": true,
+					"scope": [ "album" ],
+					"dependencies": {
+	                    "evaluate": "all",
+	                    "conditions": [
+	                         {
+	                              "option": "album_layout",
+	                              "equals": "slideshow"
+	                         }
+	                    ]
+	               	}
+				},
+				"show_album_desc": {
+					"label": "Show album description",
+					"type": "boolean",
+					"value": false,
+					"control_first": true,
+					"scope": [ "album" ],
+					"dependencies": {
+	                    "evaluate": "all",
+	                    "conditions": [
+	                         {
+	                              "option": "album_layout",
+	                              "equals": "slideshow"
+	                         }
+	                    ]
+	               	}
+				},
+				"show_title": {
+					"label": "Show content title",
+					"type": "boolean",
+					"value": true,
+					"control_first": true,
+					"scope": [ "album" ],
+					"dependencies": {
+	                    "evaluate": "all",
+	                    "conditions": [
+	                         {
+	                              "option": "album_layout",
+	                              "equals": "slideshow"
+	                         }
+	                    ]
+	               	}
+				},
+				"show_caption": {
+					"label": "Show content caption",
+					"type": "boolean",
+					"value": true,
+					"control_first": true,
+					"scope": [ "album" ],
+					"dependencies": {
+	                    "evaluate": "all",
+	                    "conditions": [
+	                         {
+	                              "option": "album_layout",
+	                              "equals": "slideshow"
+	                         }
+	                    ]
+	               	}
+				},
+				"caption_align": {
+					"label": "Caption align",
+					"type": "select",
+					"scope": [ "album" ],
+					"options": [
+						{"value": "left", "label":"Left"},
+						{"value": "center", "label":"Center"},
+						{"value": "justify", "label":"Justify"}
+					],
+					"value": "center",
+					"dependencies": {
+						"evaluate": "all",
+						"conditions": [
+							{
+								"option": "show_caption",
+								"equals": true
+							},
+							{
+	                            "option": "album_layout",
+	                            "equals": "slideshow"
+	                        }
+						]
+					}
+				},
+				"show_grid_title": {
+					"label": "Show image title",
+					"type": "boolean",
+					"value": false,
+					"control_first": true,
+					"scope": [ "album" ],
+					"dependencies": {
+						"evaluate": "all",
+						"conditions": [
+							{
+								"option": "album_layout",
+	                            "equals": "grid"
+							}
+						]
+					}
+				},
+				"show_content_title": {
+					"label": "Show title",
+					"type": "boolean",
+					"value": true,
+					"control_first": true,
+					"scope": [ "content" ]
+				},
+				"show_content_caption": {
+					"label": "Show caption",
+					"type": "boolean",
+					"value": true,
+					"control_first": true,
+					"scope": [ "content" ]
+				},
+				"show_albums_album_title": {
+					"label": "Show album titles",
+					"type": "boolean",
+					"value": true,
+					"control_first": true,
+					"scope": [ "albums", "set" ]
+				},
+				"show_albums_album_summary": {
+					"label": "Show album summary",
+					"type": "boolean",
+					"value": true,
+					"control_first": true,
+					"scope": [ "albums", "set" ]
+				}
+			}
+		},
+		"Images": {
+			"icon":"img",
+			"settings": {
+				"grid_link_lightbox": {
+					"label": "Link images to lightbox",
+					"type": "boolean",
+					"value": false,
+					"scope": [ "album" ],
+					"control_first": true,
+					"dependencies": {
+						"evaluate": "all",
+						"conditions": [
+							{
+								"option": "album_layout",
+	                            "equals": "grid"
+							}
+						]
+					}
+				}
+			}
+		},
+		"Social": {
+			"icon":"social",
+			"settings": {
+				"social_bttns_show_one": {
+					"label": "Show share buttons",
+					"type": "boolean",
+					"value": true,
+					"control_first": true
+				},
+				"social_bttns_show_two": {
+					"label": "Show like and tweet buttons",
+					"type": "boolean",
+					"value": false,
+					"control_first": true
+				},
+				"social_bttns_offset": {
+					"label": "Offset",
+					"type": "slider",
+					"min": 0,
+					"max": 100,
+					"step": 1,
+					"value": 0,
+					"suffix": "px",
+					"dependencies": {
+						"evaluate": "all",
+						"conditions": [
+							{
+								"option": "social_bttns_show_two",
+								"equals": true
+							}
+						]
+					}
+				}
+			}
+		},
+		"Color": {
+			"icon": "style",
+			"settings": {
+				"background_color": {
+					"label": "Background color",
+					"type": "color",
+					"control_first": "true"
+				},
+				"title_color": {
+					"label": "Title color",
+					"type": "color",
+					"control_first": "true"
+				},
+				"body_color": {
+					"label": "Text color",
+					"type": "color",
+					"control_first": "true"
+				},
+				"header_color": {
+					"label": "Headers color",
+					"type": "color",
+					"control_first": "true"
+				},
+				"link_color": {
+					"label": "Link color",
+					"type": "color",
+					"control_first": "true"
+				},
+				"link_hover_color": {
+					"label": "Link hover color",
+					"type": "color",
+					"control_first": "true"
+				},
+				"nav_link_color": {
+					"label": "Nav link color",
+					"type": "color",
+					"control_first": "true"
+				},
+				"nav_link_hover_color": {
+					"label": "Nav link hover color",
+					"type": "color",
+					"control_first": "true"
+				},
+				"current_color": {
+					"label": "Nav current color",
+					"type": "color",
+					"control_first": "true"
+				}
+			}
+		},
+		"Discussions": {
+			"icon":"discuss",
+			"settings": {
+				"show_disc_essay": {
+					"label": "Show essay discussions",
+					"note": "Requires a discussion plugin",
+					"type": "boolean",
+					"value": true,
+					"control_first": true,
+					"scope": [ "essay" ]
+				},
+				"show_disc_content": {
+					"label": "Show content discussions",
+					"note": "Requires a discussion plugin",
+					"type": "boolean",
+					"value": true,
+					"control_first": true,
+					"scope": [ "content" ]
+				}
+			}
+		}
+	}
+}

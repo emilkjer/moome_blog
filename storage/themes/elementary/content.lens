@@ -1,0 +1,350 @@
+<koken:include file="layouts/header.html" />
+
+<koken:load>
+
+<koken:head>
+	<meta property="og:site_name" content="{{ site.title }}" />
+	<meta property="og:title" content="{{ content.title|content.filename strip_html="true" }}" />
+	<meta property="og:description" content="{{ content.caption strip_html="true" }}" />
+	<meta property="og:type" content="website" />
+	<meta property="og:image" content="{{ content.presets.medium_large.url }}" />
+	<meta property="og:image:width" content="{{ content.presets.medium_large.width }}" />
+	<meta property="og:image:height" content="{{ content.presets.medium_large.height }}" />
+	<meta property="og:url" content="{{ content.url }}" />
+	<koken:content_image>
+		<koken:not empty="profile.twitter">
+			<meta name="twitter:card" content="photo" />
+			<meta name="twitter:site" content="@{{ profile.twitter }}" />
+			<meta name="twitter:creator" content="@{{ profile.twitter }}" />
+		</koken:not>
+	</koken:content_image>
+</koken:head>
+
+<div class="head mcol">
+
+	<ul class="detail-nav">
+
+		<koken:parent>
+			<koken:variable name="previous_label" value="Previous" />
+			<koken:variable name="next_label" value="Next" />
+		<koken:else>
+			<koken:variable name="previous_label" value="Newer" />
+			<koken:variable name="next_label" value="Older" />
+		</koken:parent>
+
+		<li>
+			<koken:previous>
+				<koken:link title="{{ previous_label }}" bind_to_key="left">&larr; {{ previous_label }}</koken:link>
+			<koken:else>
+				<a class="disabled">&larr; {{ previous_label }}</a>
+			</koken:previous>
+		</li>
+
+		<li>/</li>
+
+		<li>
+			<koken:link lightbox="true" bind_to_key="l">Lightbox</koken:link>
+		</li>
+
+		<li>/</li>
+
+		<li>
+			<koken:next>
+				<koken:link title="{{ next_label }}" bind_to_key="right">{{ next_label }} &rarr;</koken:link>
+			<koken:else>
+				<a class="disabled" title="{{ next_label }}">{{ next_label }} &rarr;</a>
+			</koken:next>
+		</li>
+
+	</ul>
+
+	<h2>
+		{{ content.title | content.filename }}
+	</h2>
+
+</div>
+
+<div id="twocol">
+
+	<div class="mcol">
+
+		<div class="content">
+
+			<koken:content_image>
+
+				<koken:link class="mag" lightbox="true" title="Lightbox">
+
+					<koken:img class="content_main" />
+
+				</koken:link>
+
+			</koken:content_image>
+
+			<koken:content_video>
+
+				<koken:video />
+
+			</koken:content_video>
+
+		</div>
+
+		{{ content.caption paragraphs="true" }}
+
+		<koken:if true="settings.show_disc_content">
+
+			<div id="kdiscuss">
+
+				<koken:discussion>
+
+					{{ discussion }}
+
+				</koken:discussion>
+
+			</div>
+
+		</koken:if>
+
+	</div>
+
+	<div class="rcol">
+
+		<aside>
+
+		<section class="view-album">
+
+			<koken:if true="settings.content_detail_show_tnav">
+
+			<koken:parent>
+
+				<h6><koken:link title="View {{ album.title }}">{{ album.title }}</koken:link> <span>({{ album.counts.total }})</span></h6>
+
+			<koken:else>
+
+				<h6><koken:link to="contents">{{ labels.content.plural }}</koken:link></h6>
+
+			</koken:parent>
+
+			<ol class="thumb-strip">
+
+				<koken:neighbors>
+
+					<koken:previous>
+						<koken:loop>
+
+							<li>
+								<koken:link title="View {{ content.title }}">
+									<koken:img preset="tiny" crop="true" width="60" height="60" />
+								</koken:link>
+							</li>
+
+						</koken:loop>
+					</koken:previous>
+
+					<li>
+						<koken:img preset="tiny" crop="true" width="60" height="60" />
+					</li>
+
+					<koken:next>
+						<koken:loop>
+
+							<li>
+								<koken:link title="View {{ content.title }}">
+									<koken:img preset="tiny" crop="true" width="60" height="60" />
+								</koken:link>
+							</li>
+
+						</koken:loop>
+					</koken:next>
+
+				</koken:neighbors>
+			</ol>
+			</koken:if>
+
+		</section>
+
+		<koken:albums>
+
+			<section>
+
+				<h6>{{ labels.album.plural }}</h6>
+				<koken:loop separator=", ">
+					<koken:link title="{{ album.title }}">
+						{{ album.title }}
+					</koken:link>
+				</koken:loop>
+
+			</section>
+
+		</koken:albums>
+
+		<koken:if true="settings.content_detail_show_date_upload">
+
+			<section>
+
+				<h6>Uploaded</h6>
+				<koken:time data="content.uploaded_on" show="date" />
+
+			</section>
+
+		</koken:if>
+
+		<koken:if true="settings.content_detail_show_date_capture">
+
+			<section>
+
+				<koken:not empty="captured_on.timestamp">
+				<h6>Captured</h6>
+				<koken:time data="content.captured_on" show="date" />
+				</koken:not>
+
+			</section>
+
+		</koken:if>
+
+		<koken:if true="settings.content_detail_show_exif">
+
+			<koken:exif>
+
+				<section>
+
+					<h6>EXIF</h6>
+					<ol class="data">
+					<koken:not empty="exif.model">
+						<li>
+							<span class="label">Model</span>
+							<span class="value">{{ exif.model }}</span>
+						</li>
+					</koken:not>
+					<koken:not empty="exif.aperture">
+						<li>
+							<span class="label">Aperture</span>
+							<span class="value">{{ exif.aperture }}</span>
+						</li>
+					</koken:not>
+					<koken:not empty="exif.exposure">
+						<li>
+							<span class="label">Exposure</span>
+							<span class="value">{{ exif.exposure }}</span>
+						</li>
+					</koken:not>
+					<koken:not empty="exif.focal_length">
+						<li>
+							<span class="label">Focal length</span>
+							<span class="value">{{ exif.focal_length }}</span>
+						</li>
+					</koken:not>
+					<koken:not empty="exif.iso_speed_ratings">
+						<li>
+							<span class="label">ISO</span>
+							<span class="value">{{ exif.iso_speed_ratings }}</span>
+						</li>
+				     </koken:not>
+				 	</ol>
+
+			 	</section>
+
+			</koken:exif>
+
+		</koken:if>
+
+		<koken:if true="settings.content_detail_show_cats">
+
+			<koken:categories>
+
+				<section>
+
+					<h6>{{ labels.category.plural }}</h6>
+					<koken:loop separator=", ">
+						<koken:link>
+							{{ category.title }}
+						</koken:link>
+					</koken:loop>
+
+				</section>
+
+			</koken:categories>
+
+		</koken:if>
+
+		<koken:if true="settings.content_detail_show_tags">
+
+			<koken:tags>
+
+				<section>
+
+					<h6>{{ labels.tag.plural }}</h6>
+					<koken:loop separator=" ">
+						<koken:link>
+							{{ tag.title }}
+						</koken:link>
+					</koken:loop>
+
+				</section>
+
+			</koken:tags>
+
+		</koken:if>
+
+		<koken:geolocation>
+
+			<section>
+
+				<h6>Location</h6>
+				<a target="_blank" href="http://maps.google.com/?q={{ geolocation.latitude }},{{ geolocation.longitude }}">View map</a>
+
+			</section>
+
+		</koken:geolocation>
+
+		<koken:if true="settings.content_detail_show_dl">
+
+			<koken:max_download>
+
+				<section>
+
+					<koken:link>Download image ({{ max_download.width }} x {{ max_download.height }})</koken:link>
+
+				</section>
+
+			</koken:max_download>
+
+		</koken:if>
+
+		<koken:if true="settings.content_detail_show_license">
+
+			<section>
+
+				<h6>License</h6>
+				{{ content.license.clean }}
+
+			</section>
+
+		</koken:if>
+
+		<koken:if true="settings.content_detail_show_share">
+
+			<section>
+
+				<h6>Share</h6>
+
+				<ul class="social-links"><li><koken:if empty="profile.twitter"><a target="_blank" href="https://twitter.com/intent/tweet?text={{ content.title|content.filename }}&url={{ content.url }}" class="share-twitter"><koken:else><a target="_blank" href="https://twitter.com/intent/tweet?text={{ content.title|content.filename }}&url={{ content.url }}&via={{ profile.twitter }}" class="share-twitter"></koken:if><i class="icon-ksocial-twitter"></i></a></li><li><a href="https://www.facebook.com/sharer.php?u={{ content.url }}" class="share-facebook" title="Share {{ content.title | content.filename }} on Facebook"><i class="icon-ksocial-facebook"></i></a></li><li><a href="http://pinterest.com/pin/create/button/?url={{ content.url }}&media={{ content.presets.large.url }}&description={{ content.title }}" class="share-pinterest" title="Share {{ content.title | content.filename }} on Pinterest"><i class="icon-ksocial-pinterest"></i></a></li><li><a href="https://plus.google.com/share?url={{ content.url }}" class="share-google" title="Share {{ content.title | content.filename }} on Google+"><i class="icon-ksocial-google-plus"></i></a></li></ul>
+
+			</section>
+
+		</koken:if>
+
+	</aside>
+
+	</div>
+
+</div> <!-- close main -->
+
+<koken:else>
+
+	Nothing to see here
+
+</koken:load>
+
+<koken:asset file="js/elem-share.js" />
+
+<koken:include file="layouts/footer.html" />

@@ -1,0 +1,24 @@
+<koken:include file="inc/header.html" />
+
+<koken:load>
+
+	<div class="archive-head">
+
+		<koken:link class="link-all" to="contents">View all {{ labels.content.plural case="lower" }}</koken:link>
+
+		<h1>
+			{{ labels.archive.plural }} / {{ archive.title }}
+		</h1>
+
+
+	</div>
+
+	<koken:include file="inc/grid.html" />
+
+	<koken:else>
+
+	No content found.
+
+</koken:load>
+
+<koken:include file="inc/footer.html" />

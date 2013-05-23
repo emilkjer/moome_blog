@@ -1,0 +1,55 @@
+<koken:include file="inc/head.html" />
+
+	<koken:include file="inc/header-essays.html" />
+
+<koken:load>
+
+	<koken:head>
+	  <meta property="og:site_name" content="{{ site.title }}" />
+	  <meta property="og:title" content="{{ essay.title strip_html="true" }}" />
+	  <meta property="og:description" content="{{ essay.excerpt strip_html="true" }}" />
+	  <meta property="og:url" content="{{ essay.url }}" />
+	  <meta name="medium" content="article" />
+	</koken:head>
+
+	<div id="text">
+
+		<div class="lcol">
+
+			<article>
+
+				<koken:include file="inc/essay-article.html" />
+
+				<koken:if true="settings.show_disc_essay">
+
+					<div id="kdiscuss">
+
+						<koken:discussion>
+
+							{{ discussion }}
+
+						</koken:discussion>
+
+					</div>
+
+				</koken:if>
+
+			</article>
+
+		</div>
+
+		<div class="rcol">
+
+			<koken:if true="settings.essay_show_aside">
+
+				<koken:include file="inc/essay-aside.html" />
+
+			</koken:if>
+
+		</div>
+
+	</div>
+
+</koken:load>
+
+<koken:include file="inc/footer.html" />

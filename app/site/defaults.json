@@ -1,0 +1,126 @@
+{
+	"routes": {
+
+		"/home/": {
+			"template": "index"
+		},
+
+		"/feed/content/recent.rss": {
+			"template": "contents.rss",
+			"filters": [ "order_by=uploaded_on", "order_direction=desc" ]
+		},
+
+		"/feed/albums/:id/recent.rss": {
+			"template": "album.rss",
+			"filters": [ "order_by=uploaded_on", "order_direction=desc" ]
+		},
+
+		"/feed/essays/recent.rss": {
+			"template": "essays.rss",
+			"filters": [ "order_by=published_on", "order_direction=desc" ]
+		}
+
+	},
+
+	"templates": {
+
+		"index": {
+			"name": "Index",
+			"description": "Featured content",
+			"source": "featured_content"
+		},
+
+		"albums": {
+			"name": "Albums",
+			"description": "All public albums and sets",
+			"source": "albums"
+		},
+
+		"album": {
+			"name": "Album detail",
+			"description": "Single album and its content",
+			"source": "album"
+		},
+
+		"album.rss": {
+			"name": "Albums RSS",
+			"description": "Public albums RSS feed",
+			"source": "album"
+		},
+
+		"archive.albums": {
+			"name": "Albums archive",
+			"description": "All public albums sorted by tag, category or date"
+		},
+
+		"set": {
+			"name": "Set detail",
+			"description": "Single set and its content",
+			"source": "set"
+		},
+
+		"contents": {
+			"name": "Content",
+			"description": "All public images and videos",
+			"source": "contents"
+		},
+
+		"favorites": {
+			"name": "Favorites",
+			"description": "All images and videos marked as a favorite",
+			"source": "favorites"
+		},
+
+		"contents.rss": {
+			"name": "Content RSS",
+			"description": "Content RSS feed",
+			"source": "contents"
+		},
+
+		"archive.contents": {
+			"name": "Content archive",
+			"description": "All public content sorted by tag, category or date"
+		},
+
+		"content": {
+			"name": "Content detail",
+			"description": "Single piece photo or video",
+			"source": "content"
+		},
+
+		"essays": {
+			"name": "Essays",
+			"description": "All published essays",
+			"source": "essays"
+		},
+
+		"essays.rss": {
+			"name": "Essays RSS",
+			"description": "Essays RSS feed",
+			"source": "essays"
+		},
+
+		"essay": {
+			"name": "Essay detail",
+			"description": "Single essay",
+			"source": "essay"
+		},
+
+		"archive.essays": {
+			"name": "Essays archive",
+			"description": "All published essays sorted by tag, category or date"
+		},
+
+		"page": {
+			"name": "Page",
+			"description": "All custom pages",
+			"source": "page"
+		},
+
+		"archives": {
+			"name": "Date archive",
+			"description": "All published content, essays and albums sorted by date"
+		}
+
+	}
+}

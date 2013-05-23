@@ -1,0 +1,91 @@
+<koken:include file="layouts/header.html" />
+
+<koken:load>
+
+<koken:head>
+	<meta property="og:site_name" content="{{ site.title }}" />
+	<meta property="og:title" content="{{ album.title strip_html="true" }}" />
+	<meta property="og:description" content="{{ album.summary | album.description strip_html="true" }}" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="{{ album.url }}" />
+	<koken:covers><koken:shift>
+	<meta property="og:image" content="{{ content.presets.medium_large.url }}" />
+	<meta property="og:image:width" content="{{ content.presets.medium_large.width }}" />
+	<meta property="og:image:height" content="{{ content.presets.medium_large.height }}" />
+	</koken:shift></koken:covers>
+	<koken:not empty="profile.twitter">
+		<meta name="twitter:card" content="gallery" />
+		<meta name="twitter:site" content="@{{ profile.twitter }}" />
+		<meta name="twitter:creator" content="@{{ profile.twitter }}" />
+		<koken:covers minimum="4" limit="4">
+			<koken:loop>
+				<meta name="twitter:image{{ index }}" content="{{ content.presets.medium_large.cropped.url }}">
+			</koken:loop>
+		</koken:covers>
+	</koken:not>
+</koken:head>
+
+<koken:if true="settings.show_album_title">
+
+	<div id="album-title">
+		<h1>
+			{{ album.title }}
+		</h1>
+	</div>
+
+</koken:if>
+
+<koken:if true="settings.show_album_desc">
+
+	<div id="album-desc">
+		{{ album.description paragraphs="true" }}
+	</div>
+
+</koken:if>
+
+<koken:if data="settings.album_layout" equals="slideshow">
+
+	<koken:include file="layouts/album-slideshow.html" />
+
+</koken:if>
+
+<koken:if data="settings.album_layout" equals="grid">
+
+	<koken:include file="layouts/album-grid.html" />
+
+</koken:if>
+
+<koken:if true="settings.social_bttns_show_one">
+
+	<ul class="social-links">
+		<li><koken:if empty="profile.twitter"><a href="https://twitter.com/intent/tweet?text={{ album.title }}&url={{ album.url }}" class="share-twitter" title="Share {{ album.title }} on Twitter"><koken:else><a href="https://twitter.com/intent/tweet?text={{ album.title }}&url={{ album.url }}&via={{ profile.twitter }}" class="share-twitter" title="Share {{ album.title }} on Twitter"></koken:if><i class="kicon-share-twitter"></i></a></li>
+		<li><a href="https://www.facebook.com/sharer.php?u={{ album.url }}" class="share-facebook" title="Share {{ album.title }} on Facebook"><i class="kicon-share-facebook"></i></a></li>
+		<li><a href="http://pinterest.com/pin/create/button/?url={{ album.url }}&media={{ album.covers.first.presets.large.url }}&description={{ album.title }}" class="share-pinterest" title="Share {{ album.title }} on Pinterest"><i class="kicon-share-pinterest"></i></a></li>
+		<li><a href="https://plus.google.com/share?url={{ album.url }}" class="share-google" title="Share {{ album.title }} on Google+"><i class="kicon-share-gplus"></i></a></li>
+	</ul>
+
+	<koken:asset file="js/axis-share.js" />
+
+</koken:if>
+
+<koken:if true="settings.social_bttns_show_two">
+
+	<div id="social-bttns">
+		<div class="cell left">
+			<div style="float:right;">
+				<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+			</div>
+		</div>
+		<div class="cell right">
+			<div style="float:left;">
+				<a class="addthis_button_tweet"></a>
+			</div>
+		</div>
+		<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+	</div>
+
+</koken:if>
+
+</koken:load>
+
+<koken:include file="layouts/footer.html" />

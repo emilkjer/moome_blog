@@ -1,0 +1,17 @@
+<koken:pagination>
+
+<div id="pagination">
+
+	<koken:link data="previous_page" title="{{ previous_page.number }}" bind_to_key="left">
+		Previous&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	</koken:link>
+
+	{{ page }} / {{ pages }}
+
+	<koken:link data="next_page" title="{{ next_page.number }}" bind_to_key="right">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Next
+	</koken:link>
+
+</div>
+
+</koken:pagination>

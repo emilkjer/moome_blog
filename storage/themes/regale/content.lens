@@ -1,0 +1,182 @@
+<koken:include file="inc/header.html" />
+
+<koken:load>
+
+	<koken:head>
+		<meta property="og:site_name" content="{{ site.title }}" />
+		<meta property="og:title" content="{{ content.title|content.filename strip_html="true" }}" />
+		<meta property="og:description" content="{{ content.caption strip_html="true" }}" />
+		<meta property="og:type" content="website" />
+		<meta property="og:image" content="{{ content.presets.medium_large.url }}" />
+		<meta property="og:image:width" content="{{ content.presets.medium_large.width }}" />
+		<meta property="og:image:height" content="{{ content.presets.medium_large.height }}" />
+		<meta property="og:url" content="{{ content.url }}" />
+		<koken:content_image>
+			<koken:not empty="profile.twitter">
+				<meta name="twitter:card" content="photo" />
+				<meta name="twitter:site" content="@{{ profile.twitter }}" />
+				<meta name="twitter:creator" content="@{{ profile.twitter }}" />
+			</koken:not>
+		</koken:content_image>
+	</koken:head>
+
+	<div id="content">
+
+			<div class="pad">
+
+				<div class="media">
+
+					<div id="content-pagination">
+
+						<koken:previous>
+							<koken:link class="content-pag prev" bind_to_key="left">&larr;</koken:link>
+						</koken:previous>
+
+						<koken:next>
+							<koken:link class="content-pag next" bind_to_key="right">&rarr;</koken:link>
+						</koken:next>
+
+					</div>
+
+					<koken:content_image>
+						<koken:img />
+					</koken:content_image>
+
+					<koken:content_video>
+						<koken:video />
+					</koken:content_video>
+
+				</div> <!-- close .media -->
+
+				<div id="content-caption">
+
+					<div class="col l">
+
+						<ul>
+							<li>
+								<koken:if true="settings.content_show_title">
+									<h2>{{ content.title | content.filename }}</h2>
+								</koken:if>
+							</li>
+							<koken:if true="settings.content_show_date">
+								<li>
+									<koken:time show="date" />
+								</li>
+							</koken:if>
+							<koken:parent>
+							<li>
+								<p>
+									From the {{ labels.album.singular }} <koken:link title="View {{ album.title }}">
+									{{ album.title }}</koken:link>
+								</p>
+							</li>
+							</koken:parent>
+						</ul>
+
+					</div> <!-- close .col -->
+
+					<div class="col r">
+
+						<ul>
+							<koken:if true="settings.content_show_caption">
+								<koken:not empty="content.caption">
+									<li>
+										{{ content.caption paragraphs="true" }}
+									</li>
+								</koken:not>
+							</koken:if>
+							<koken:if true="settings.content_show_meta">
+								<koken:categories>
+								<li>
+									<koken:loop separator=", ">
+										<koken:link>
+											{{ category.title }}
+										</koken:link>
+									</koken:loop>
+								</li>
+								</koken:categories>
+								<koken:tags>
+								<li>
+									<koken:loop separator=", ">
+										<koken:link>
+											{{ tag.title }}
+										</koken:link>
+									</koken:loop>
+								</li>
+								</koken:tags>
+							</koken:if>
+							<koken:if true="settings.content_show_exif">
+								<koken:exif>
+								<li>
+									<koken:not empty="exif.model">
+										{{ exif.model }},
+									</koken:not>
+									<koken:not empty="exif.exposure">
+										{{ exif.exposure }},
+									</koken:not>
+									<koken:not empty="exif.aperture">
+										{{ exif.aperture }},
+									</koken:not>
+									<koken:not empty="exif.focal_length">
+										{{ exif.focal_length }},
+									</koken:not>
+									<koken:not empty="exif.iso_speed_ratings">
+										{{ exif.iso_speed_ratings }}
+									</koken:not>
+								</li>
+								</koken:exif>
+							</koken:if>
+							<koken:if true="settings.content_show_license">
+							<li>
+								{{ content.license.clean }}
+							</li>
+							</koken:if>
+							<koken:if true="settings.content_show_dl">
+								<koken:max_download>
+								<li>
+									<strong>Download image:</strong> <koken:link>
+										{{ max_download.label }}&nbsp;({{ max_download.width }}x{{ max_download.height }})
+									</koken:link>
+								<li>
+								</koken:max_download>
+							</koken:if>
+
+							<koken:if true="settings.social_bttns_show_one">
+
+				            <strong>Share:</strong>
+				            <ul class="social-links"><li><koken:if empty="profile.twitter"><a target="_blank" href="https://twitter.com/intent/tweet?text={{ content.title|content.filename }}&url={{ content.url }}" class="share-twitter"><koken:else><a target="_blank" href="https://twitter.com/intent/tweet?text={{ content.title|content.filename }}&url={{ content.url }}&via={{ profile.twitter }}" class="share-twitter"></koken:if><i class="kicon-share-twitter"></i></a></li>
+				            <li><a href="https://www.facebook.com/sharer.php?u={{ content.url }}" class="share-facebook" title="Share {{ content.title | content.filename }} on Facebook">Facebook</a></li>
+				            <li><a href="http://pinterest.com/pin/create/button/?url={{ content.url }}&media={{ content.presets.large.url }}&description={{ content.title }}" class="share-pinterest" title="Share {{ content.title | content.filename }} on Pinterest">Pinterest</a></li>
+				            <li><a href="https://plus.google.com/share?url={{ content.url }}" class="share-google" title="Share {{ content.title | content.filename }} on Google+">Google+</a></li>
+
+				            <koken:asset file="js/regale-share.js" />
+
+				        </koken:if>
+
+							<koken:if true="settings.show_disc_content">
+
+								<div id="kdiscuss">
+
+									<koken:discussion>
+
+										{{ discussion }}
+
+									</koken:discussion>
+
+								</div>
+
+							</koken:if>
+
+						</ul>
+
+					</div> <!-- close .col -->
+
+				</div> <!-- close #content-caption -->
+
+			</div> <!-- close .pad -->
+
+	</div> <!-- close #content -->
+
+</koken:load>
+
+<koken:include file="inc/footer.html" />

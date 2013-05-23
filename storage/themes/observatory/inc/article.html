@@ -1,0 +1,32 @@
+<div class="content-row">
+
+	<div class="wrap">
+
+		<h2 class="title">
+			<koken:link>{{ essay.title }}</koken:link>
+		</h2>
+
+		<koken:time />
+
+	</div>
+
+</div>
+
+<div class="essay-body">
+
+	{{ essay.content }}
+
+</div>
+
+<div class="essay-foot">
+
+	<koken:categories>
+
+		<koken:loop separator=", ">
+			<koken:link>
+				{{ category.title }}
+			</koken:link>
+		</koken:loop>
+	</koken:categories>
+
+</div>

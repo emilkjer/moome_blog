@@ -1,0 +1,53 @@
+<koken:include file="inc/header.html" />
+
+<div id="text">
+
+	<koken:load>
+
+		<koken:head>
+		  <meta property="og:site_name" content="{{ site.title }}" />
+		  <meta property="og:title" content="{{ essay.title strip_html="true" }}" />
+		  <meta property="og:description" content="{{ essay.excerpt strip_html="true" }}" />
+		  <meta property="og:url" content="{{ essay.url }}" />
+		  <meta name="medium" content="article" />
+		</koken:head>
+
+		<article>
+
+			<koken:include file="inc/article.html" />
+
+			<koken:if true="settings.show_disc_essay">
+
+				<div id="kdiscuss">
+
+					<koken:discussion>
+
+						{{ discussion }}
+
+					</koken:discussion>
+
+				</div>
+
+			</koken:if>
+
+		</article>
+
+		<div id="content-pag">
+
+			<koken:previous>
+				<koken:link title="{{ essay.title }}">&larr; {{ essay.title }}</koken:link>&nbsp;&nbsp;&nbsp;&nbsp;
+			</koken:previous>
+
+			<koken:link to="essays">View all {{ labels.essay.plural case="lower" }}</koken:link>
+
+			<koken:next>
+				&nbsp;&nbsp;&nbsp;&nbsp;<koken:link title="{{ essay.title }}">{{ essay.title }} &rarr; </koken:link>
+			</koken:next>
+
+		</div>
+
+	</koken:load>
+
+</div>
+
+<koken:include file="inc/footer.html" />

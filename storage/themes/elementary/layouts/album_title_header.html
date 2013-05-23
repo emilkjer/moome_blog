@@ -1,0 +1,39 @@
+<div class="head">
+
+	<ul class="detail-nav">
+		<li>
+			<koken:previous>
+				<koken:link title="Previous">Previous</koken:link>
+			<koken:else>
+				<a class="disabled" title="Previous">Previous</a>
+			</koken:previous>
+		</li>
+		<li><span class="spacer">/</span></li>
+		<li>
+			<koken:parent>
+				<koken:link>
+					{{ album.title }}
+				</koken:link>
+			<koken:else>
+				<koken:link to="albums" title="All {{ labels.album.plural }}">All {{ labels.album.plural case="lower" }}</koken:link>
+			</koken:parent>
+		</li>
+		<li><span class="spacer">/</span></li>
+		<li>
+			<koken:next>
+				<koken:link title="Next">Next</koken:link>
+			<koken:else>
+				<a class="disabled" title="Next">Next</a>
+			</koken:next>
+		</li>
+	</ul>
+
+	<h2>
+		{{ album.title }}
+	</h2>
+
+	<koken:if true="settings.show_album_desc">
+		{{ album.description paragraphs="true" }}
+	</koken:if>
+
+</div>

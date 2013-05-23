@@ -1,0 +1,47 @@
+<koken:if true="pjax">
+	<koken:title />
+<koken:else>
+	<koken:include file="layouts/header.html" />
+</koken:if>
+
+	<koken:load>
+
+		<koken:head>
+		  <meta property="og:site_name" content="{{ site.title }}" />
+		  <meta property="og:title" content="{{ essay.title strip_html="true" }}" />
+		  <meta property="og:description" content="{{ essay.excerpt strip_html="true" }}" />
+		  <meta property="og:url" content="{{ essay.url }}" />
+		  <meta name="medium" content="article" />
+		</koken:head>
+
+		<div id="main">
+
+			<article>
+
+				<koken:include file="layouts/essay.html" />
+
+				<koken:if true="settings.show_disc_essay">
+
+					<div id="kdiscuss">
+
+						<koken:discussion>
+
+							{{ discussion }}
+
+						</koken:discussion>
+
+					</div>
+
+				</koken:if>
+
+			</article>
+
+		</div>
+
+	</koken:load>
+
+<koken:if true="pjax">
+	<script>$K.ready();</script>
+<koken:else>
+	<koken:include file="layouts/footer.html" />
+</koken:not>

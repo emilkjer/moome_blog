@@ -1,0 +1,15 @@
+<koken:include file="layouts/header.html" />
+
+<koken:load>
+
+	<article>
+
+		<h2>{{ page.title }}</h2>
+
+		{{ page.content }}
+
+	</article>
+
+</koken:load>
+
+<koken:include file="layouts/footer.html" />

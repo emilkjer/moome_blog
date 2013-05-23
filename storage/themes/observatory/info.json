@@ -1,0 +1,309 @@
+{
+	"name": "Observatory",
+	"version": "1.2.2",
+	"description": "Tri-column collection browsing perfect for graphic design portfolios.",
+	"demo": "http://koken.me",
+	"author": {
+		"name": "Koken",
+		"link": "http://koken.me"
+	},
+	"koken_version_required": "0.8.0-beta.1",
+
+	"default_front_page": "albums",
+
+	"settings": {
+		"Site title": {
+			"icon":"type",
+			"settings": {
+				"site_title_type": {
+					"label": "Type",
+					"type": "select",
+					"options": [
+						{ "label": "Text", "value": "text" },
+						{ "label": "Image", "value": "image" }
+					],
+					"value": "text"
+				},
+				"site_title_case": {
+					"label": "Transform",
+					"type": "select",
+					"options": [
+						{ "label":"Uppercase", "value":"uppercase" },
+						{ "label":"Lowercase", "value":"lowercase" },
+						{ "label":"Capitalize", "value":"capitalize" },
+						{ "label":"None", "value":"none" }
+					],
+					"value": "uppercase",
+					"dependencies": {
+	                    "evaluate": "all",
+	                    "conditions": [
+	                         {
+	                              "option": "site_title_type",
+	                              "equals": "text"
+	                         }
+	                    ]
+	               }
+				},
+				"site_title_weight": {
+					"label": "Weight",
+					"type": "select",
+					"options": [
+						{ "label":"300", "value":"300" },
+						{ "label":"400", "value":"400" },
+						{ "label":"700", "value":"700" }
+					],
+					"value":"700",
+					"dependencies": {
+	                    "evaluate": "all",
+	                    "conditions": [
+	                         {
+	                              "option": "site_title_type",
+	                              "equals": "text"
+	                         }
+	                    ]
+	               }
+				},
+				"site_title_size": {
+					"label": "Size",
+					"type": "slider",
+					"min": 11,
+					"max": 56,
+					"step": 1,
+					"value": 16,
+					"suffix": "px",
+					"dependencies": {
+	                    "evaluate": "all",
+	                    "conditions": [
+	                         {
+	                              "option": "site_title_type",
+	                              "equals": "text"
+	                         }
+	                    ]
+	               }
+				},
+				"site_title_lh": {
+					"label": "Line height",
+					"type": "slider",
+					"min": 11,
+					"max": 56,
+					"step": 1,
+					"value": 21,
+					"suffix": "px",
+					"dependencies": {
+	                    "evaluate": "all",
+	                    "conditions": [
+	                         {
+	                              "option": "site_title_type",
+	                              "equals": "text"
+	                         }
+	                    ]
+	               }
+				},
+				"show_tagline": {
+					"label": "Show tagline",
+					"type": "boolean",
+					"value": "false",
+					"dependencies": {
+	                    "evaluate": "all",
+	                    "conditions": [
+	                         {
+	                              "option": "site_title_type",
+	                              "equals": "text"
+	                         }
+	                    ]
+	               }
+				},
+				"site_title_img_url": {
+					"label": "Image URL",
+					"type": "string",
+					"value": "",
+					"dependencies": {
+	                    "evaluate": "all",
+	                    "conditions": [
+	                         {
+	                              "option": "site_title_type",
+	                              "equals": "image"
+	                         }
+	                    ]
+	               }
+				},
+				"site_title_img_scale_mobile": {
+					"label": "Mobile scale",
+					"type": "slider",
+					"min": 0.1,
+					"max": 1,
+					"step": 0.1,
+					"value": 0.5,
+					"dependencies": {
+	                    "evaluate": "all",
+	                    "conditions": [
+	                         {
+	                              "option": "site_title_type",
+	                              "equals": "image"
+	                         }
+	                    ]
+	               }
+				}
+			}
+		},
+		"Footer": {
+			"icon": "layout",
+			"settings": {
+				"footer_text": {
+					"label": "Footer text",
+					"type": "string",
+					"value": ""
+				}
+			}
+		},
+		"Layout": {
+			"icon": "layout",
+			"settings": {
+				"show_summary": {
+					"label": "Show summary",
+					"type": "boolean",
+					"control_first": "true",
+					"value": "true",
+					"scope": [ "album" ]
+				},
+				"show_more_albums": {
+					"label": "Show more albums",
+					"type": "boolean",
+					"control_first": "true",
+					"value": "true",
+					"scope": [ "album" ]
+				},
+				"show_exif": {
+					"label": "Show EXIF",
+					"type": "boolean",
+					"value": true,
+					"control_first": true,
+					"scope": [ "content" ]
+				},
+				"albums_thumb_crop": {
+					"label": "Image scale",
+					"type": "select",
+					"options": [
+						{ "label":"None", "value": "none" },
+						{ "label":"Fill", "value": "fill" }
+					],
+					"value": "none",
+					"scope": [ "albums" ]
+				},
+				"albums_thumb_size": {
+					"label": "Size",
+					"type": "select",
+					"options": [
+						{ "label": "2:1", "value": "2:1" },
+						{ "label": "3:2", "value": "3:2" },
+						{ "label": "4:3", "value": "4:3" },
+						{ "label": "16:9", "value": "16:9" }
+					],
+					"value": "3:2",
+					"scope": [ "albums" ],
+					"dependencies": {
+	                    "evaluate": "all",
+	                    "conditions": [
+	                         {
+	                              "option": "albums_thumb_crop",
+	                              "equals": "fill"
+	                         }
+	                    ]
+	               }
+				},
+				"cd_show_more": {
+					"label": "Show related content",
+					"type": "boolean",
+					"value": true,
+					"scope": [ "content" ],
+					"control_first": true
+				},
+				"cd_more_type": {
+					"label": "Related layout",
+					"type": "select",
+					"value": "neighbors",
+					"options": [
+						{ "label": "Neighbors", "value": "neighbors" },
+						{ "label": "Grid", "value": "grid" }
+					],
+					"scope": [ "content" ]
+				}
+			}
+		},
+		"Text": {
+			"icon":"type",
+			"settings": {
+				"show_title": {
+					"label": "Show image title",
+					"type": "boolean",
+					"value": "false",
+					"control_first": "true",
+					"scope": [ "album" ]
+				},
+				"show_caption": {
+					"label": "Show image caption",
+					"type": "boolean",
+					"value": "false",
+					"control_first": "true",
+					"scope": [ "album" ]
+				}
+			}
+		},
+		"Social": {
+			"icon":"social",
+			"settings": {
+				"social_bttns_show_one": {
+					"label": "Show share buttons",
+					"type": "boolean",
+					"value": true,
+					"control_first": true
+				},
+				"social_bttns_show_two": {
+					"label": "Show like and tweet buttons",
+					"type": "boolean",
+					"value": false,
+					"control_first": true
+				},
+				"social_bttns_offset": {
+					"label": "Offset",
+					"type": "slider",
+					"min": 0,
+					"max": 100,
+					"step": 1,
+					"value": 0,
+					"suffix": "px",
+					"dependencies": {
+						"evaluate": "all",
+						"conditions": [
+							{
+								"option": "social_bttns_show_two",
+								"equals": true
+							}
+						]
+					}
+				}
+			}
+		},
+		"Discussions": {
+			"icon":"discuss",
+			"settings": {
+				"show_disc_essay": {
+					"label": "Show essay discussions",
+					"note": "Requires a discussion plugin",
+					"type": "boolean",
+					"value": true,
+					"control_first": true,
+					"scope": [ "essay" ]
+				},
+				"show_disc_content": {
+					"label": "Show content discussions",
+					"note": "Requires a discussion plugin",
+					"type": "boolean",
+					"value": true,
+					"control_first": true,
+					"scope": [ "content" ]
+				}
+			}
+		}
+	}
+}

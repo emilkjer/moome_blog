@@ -1,0 +1,19 @@
+<koken:include file="layouts/header.html" />
+
+<p>
+	<koken:pulse jsvar="pulse" link_to="advance" fallbacktext="No featured content found. Please assign some in the Library." />
+</p>
+
+<koken:if true="settings.index_show_title">
+
+<p id="image_title">&nbsp;</p>
+
+<script>
+	pulse.on( 'transitionstart', function(e) {
+		$('#image_title').html(e.data.title || e.data.filename);
+	});
+</script>
+
+</koken:if>
+
+<koken:include file="layouts/footer.html" />

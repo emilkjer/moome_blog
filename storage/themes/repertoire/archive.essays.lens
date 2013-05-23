@@ -1,0 +1,73 @@
+<koken:include file="inc/header.html" />
+
+<div id="essays-index" class="essay-page">
+
+<koken:load limit="10">
+
+	<koken:loop>
+
+		<article>
+
+			<div class="row">
+
+				<div class="four columns">&nbsp;</div>
+
+				<div class="twelve columns">
+
+					<header>
+						<h1>
+							<koken:link>
+								{{ essay.title }}
+							</koken:link>
+						</h1>
+					</header>
+
+				</div>
+
+			</div>
+
+			<div class="row">
+
+				<div class="four columns">
+
+					<koken:include file="inc/article-aside.html" />
+
+				</div>
+
+				<div class="twelve columns">
+
+					{{ essay.content }}
+
+					<footer>
+
+					<footer>
+
+				</div>
+
+			</div>
+
+		</article>
+
+	</koken:loop>
+
+	<div class="row">
+
+		<div class="four columns">&nbsp;</div>
+
+		<div class="twelve columns">
+
+			<koken:include file="inc/pagination.html" />
+
+		</div>
+
+	</div>
+
+	<koken:else>
+
+	No essays found. Create some in Text.
+
+</koken:load>
+
+</div>
+
+<koken:include file="inc/footer.html" />

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="description" content="{{ site.description }}" />
+	<meta name="author" content="{{ site.title }}" />
+	<meta name="keywords" content="{{ site.keywords }}" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+
+	<koken:title />
+
+	<!-- css -->
+	<koken:asset file="reset.css" common="true" />
+	<koken:asset file="css/skeleton.css" />
+	<koken:if true="settings.social_bttns_show_one"><koken:asset file="css/ksocial.css" /></koken:if>
+	<koken:settings />
+
+</head>
+
+<body>
+
+	<div class="container">
+
+		<header class="top">
+
+			<div class="row">
+
+				<div class="four columns">
+					<hgroup>
+						<koken:if data="settings.site_title_type" equals="text">
+							<h1><koken:link to="front">{{ site.title }}</koken:link></h1>
+							<koken:if true="settings.show_tagline">
+								<span class="tagline">{{ site.tagline }}</span>
+							</koken:if>
+						<koken:else>
+							<koken:link to="front"><img src="{{ settings.site_title_img_url }}" alt="{{ site.title }}" class="custom_logo"></koken:link>
+						</koken:if>
+					</hgroup>
+				</div>
+				<div class="four columns">
+					<koken:if true="settings.nav_show_headers"><h2>{{ settings.primary_title }}</h2></koken:if>
+					<nav>
+						<koken:navigation />
+					</nav>
+				</div>
+				<div class="four columns">
+					<koken:if true="settings.nav_show_secondary">
+						<koken:if true="settings.nav_show_headers"><h2>{{ settings.secondary_title }}</h2></koken:if>
+						<nav>
+							<koken:navigation group="secondary" />
+						</nav>
+					</koken:if>
+				</div>
+				<div class="four columns">
+					<koken:if true="settings.nav_show_tertiary">
+						<koken:if true="settings.nav_show_headers"><h2>{{ settings.tertiary_title }}</h2></koken:if>
+						<nav>
+							<koken:navigation group="tertiary" />
+						</nav>
+					</koken:if>
+				</div>
+
+			</div>
+
+		</header>
+
+		<div class="main">
